@@ -1,0 +1,95 @@
+import React, { useState } from 'react';
+
+function SearchBar({ onSearch }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRestrictions, setSelectedRestrictions] = useState([]);
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    if (onSearch) {
+      onSearch(event.target.value);
+    }
+  };
+
+  const handleButtonClick = (restriction) => {
+    if (selectedRestrictions.includes(restriction)) {
+      setSelectedRestrictions(current => current.filter(r => r !== restriction));
+    } else {
+      setSelectedRestrictions(current => [...current, restriction]);
+    }
+  };
+
+  React.useEffect(() => {
+    const combinedTerm = selectedRestrictions.join(' + ');
+    setSearchTerm(combinedTerm);
+    if (onSearch) {
+      onSearch(combinedTerm);
+    }
+  }, [selectedRestrictions, onSearch]);
+
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      marginTop: '-100px',
+    }}>
+      <input
+        type="text"
+        placeholder="Dietary Restrictions"
+        value={searchTerm}
+        onChange={handleChange}
+        style={{
+          width: '60%',
+          padding: '20px',
+          fontSize: '1.5rem',
+          borderRadius: '25px',
+          border: '1px solid #ccc',
+          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          marginBottom: '20px',
+        }}
+      />
+       
+     <div style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      maxWidth: '1024px',
+    }}>
+      {["Lacto-vegetarian", "Ovo-vegetarian",
+      "Lacto-ovo vegetarian", "Vegan", "Pescatarian", "Keto",
+      "Gluten-Free", "Dairy-Free", "Halal", "Kosher",
+      "Nut-Free", "Low Sodium", "Low Sugar", "Low Calories"].map((restriction) => (
+        <button
+          key={restriction}
+          onClick={() => handleButtonClick(restriction)}
+          style={{
+            width: '180px', // Set a fixed width
+            height: '50px', // Set a fixed height
+            padding: '10px',
+            margin: '5px',
+            backgroundColor: selectedRestrictions.includes(restriction) ? '#007bff' : '#f0f0f0',
+            color: selectedRestrictions.includes(restriction) ? 'white' : 'black',
+            border: 'none',
+            borderRadius: '20px',
+            cursor: 'pointer',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          {restriction}
+        </button>
+      ))}
+    </div>
+  </div>
+);
+}
+
+export default SearchBar;
