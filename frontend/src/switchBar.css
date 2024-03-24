@@ -1,0 +1,31 @@
+.switch-bar {
+    display: flex;
+    border-bottom: 2px solid #ccc; /* Add a bottom border for the inactive tab */
+    margin-bottom: 20px;
+  }
+  
+  .switch-option {
+    flex-grow: 1; /* Ensure each option takes up equal space */
+    text-align: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 2px solid transparent; /* Transparent border for a consistent height */
+  }
+  
+  /* This will give the appearance of tabs */
+  .switch-option.active {
+    border-bottom: 2px solid #4CAF50; /* Green bottom border for active tab */
+    font-weight: bold;
+    color: black; /* Color for active option */
+  }
+  
+
+/* Styling for the inactive option */
+.switch-option:not(.active) {
+  color: #ccc; /* Grey out the inactive option */
+}
