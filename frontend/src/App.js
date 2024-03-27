@@ -10,13 +10,12 @@
 //   )
 // }
 // // src/App.js
+
 // import React from 'react';
-// import Login from './pages/login'; 
-// import SearchBar from './pages/restrictions'; 
+// import Login from './pages/login';
+// import SearchBar from './pages/restrictions';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import 'firebaseui/dist/firebaseui.css';
-
-
 
 // function App() {
 //   return (

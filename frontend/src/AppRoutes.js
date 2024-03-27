@@ -21,6 +21,7 @@ import HomePage from "./pages/Home/HomePage";
 import FoodPage from "./pages/Food/FoodPage";
 import Login from "./pages/Login/login"; // Make sure the path is correct
 import SearchBar from "./pages/restrictions/restrictions"; // Make sure the path is correct
+import CartPage from "./pages/Cart/CartPage";
 
 export default function AppRoutes() {
   return (
@@ -31,6 +32,7 @@ export default function AppRoutes() {
       <Route path="/tag/:tag" element={<HomePage />} />
       <Route path="/food/:id" element={<FoodPage />} />
       <Route path="/dietary" element={<SearchBar />} />
+      <Route path="/cart" element={<CartPage />} />
     </Routes>
   );
 }

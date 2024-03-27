@@ -5,8 +5,9 @@ export const sample_foods = [
     imageURL: "chicken.jpg",
     cookTime: "10 Mins",
     favorite: true,
-    tags: ["peanut","Lunch",],
-    allergy: ["peanut","Lunch",],
+    tags: ["peanut", "Lunch"],
+    allergy: ["peanut", "Lunch"],
+    calories: "100 kcals",
   },
   {
     id: "2",
@@ -16,6 +17,7 @@ export const sample_foods = [
     favorite: false,
     tags: ["peanut", "dairy"],
     allergy: ["peanut", "dairy"],
+    calories: "200 kcals",
   },
   {
     id: "3",
@@ -23,17 +25,17 @@ export const sample_foods = [
     imageURL: "green_pepper.png",
     cookTime: "5 Mins",
     favorite: true,
-    tags: ["alcohol","SlowFood"],
-    allergy: ["alcohol","SlowFood"],
+    tags: ["alcohol", "SlowFood"],
+    allergy: ["alcohol", "SlowFood"],
+    calories: "5 kcals",
   },
 ];
 
 export const sample_tags = [
-  {name : "All", count: 3},
-  {name : "peanut", count: 2},
-  {name : "Lunch", count: 1},
-  {name : "dairy", count: 1},
-  {name : "alcohol", count: 1},
-  {name : "SlowFood", count: 1},
-  
-]
+  { name: "All", count: 3 },
+  { name: "peanut", count: 2 },
+  { name: "Lunch", count: 1 },
+  { name: "dairy", count: 1 },
+  { name: "alcohol", count: 1 },
+  { name: "SlowFood", count: 1 },
+];

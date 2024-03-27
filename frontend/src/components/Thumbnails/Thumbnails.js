@@ -15,6 +15,7 @@ export default function Thumbnails({ foods }) {
             />
             <div className={classes.content}>
               <div className={classes.name}>{food.name}</div>
+              <div className={classes.name}>{food.calories}</div>
               <span className={food.favorite ? classes.favorite : classes.not}>
                 ♥
               </span>
