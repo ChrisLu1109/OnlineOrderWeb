@@ -7,7 +7,7 @@ export const sample_foods = [
     favorite: true,
     tags: ["peanut", "Lunch"],
     allergy: ["peanut", "Lunch"],
-    calories: "100 kcals",
+    calories: 100 ,
   },
   {
     id: "2",
@@ -17,7 +17,7 @@ export const sample_foods = [
     favorite: false,
     tags: ["peanut", "dairy"],
     allergy: ["peanut", "dairy"],
-    calories: "200 kcals",
+    calories: 200,
   },
   {
     id: "3",
@@ -27,7 +27,7 @@ export const sample_foods = [
     favorite: true,
     tags: ["alcohol", "SlowFood"],
     allergy: ["alcohol", "SlowFood"],
-    calories: "5 kcals",
+    calories: 5 ,
   },
 ];
 
