@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRestrictions, setSelectedRestrictions] = useState([]);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -19,7 +21,11 @@ function SearchBar({ onSearch }) {
     }
   };
 
-  React.useEffect(() => {
+  const handleConfirmClick = () => {
+    navigate('/'); // This will navigate to the homepage
+  };
+
+  useEffect(() => {
     const combinedTerm = selectedRestrictions.join(' + ');
     setSearchTerm(combinedTerm);
     if (onSearch) {
@@ -51,6 +57,20 @@ function SearchBar({ onSearch }) {
           marginBottom: '20px',
         }}
       />
+      
+      <button onClick={handleConfirmClick} style={{
+        padding: '10px 20px',
+        margin: '10px 0',
+        backgroundColor: '#007bff',
+        color: 'white',
+        border: 'none',
+        borderRadius: '50px',
+        cursor: 'pointer',
+        fontSize: '1rem',
+        boxShadow: '0 3px 6px rgba(0, 0, 0, 0.1)',
+      }}>
+        Confirm
+      </button>
        
      <div style={{
       display: 'flex',

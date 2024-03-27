@@ -1,15 +1,15 @@
-import AppRoutes from "./AppRoutes";
-import Header from "./components/Header/Header";
+// import AppRoutes from "./AppRoutes";
+// import Header from "./components/Header/Header";
 
-function App() {
-  return (
-    <>
-      <Header />
-      <AppRoutes />
-    </>
-  )
-}
-// src/App.js
+// function App() {
+//   return (
+//     <>
+//       <Header />
+//       <AppRoutes />
+//     </>
+//   )
+// }
+// // src/App.js
 // import React from 'react';
 // import Login from './pages/login'; 
 // import SearchBar from './pages/restrictions'; 
@@ -38,4 +38,21 @@ function App() {
 //   );
 // }
 
+// export default App;
+
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './AppRoutes'; // Assuming this file exists and is in the correct path
+import Header from './components/Header/Header';
+
+function App() {
+  return (
+    <>
+      <Header />
+      <AppRoutes />
+    </>
+  );
+}
+
 export default App;
+
