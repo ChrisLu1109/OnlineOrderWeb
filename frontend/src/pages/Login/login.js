@@ -22,7 +22,7 @@ function Login() {
         password
       );
       console.log("User logged in", userCredential);
-      navigate("/dietary");
+      navigate("/");
       // Redirect the user or update the state as needed
     } catch (error) {
       setError(error.message);
