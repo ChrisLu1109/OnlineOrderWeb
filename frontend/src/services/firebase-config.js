@@ -5,7 +5,7 @@ import { getAnalytics } from "firebase/analytics";
 import React, { useEffect } from 'react';
 // import * as firebaseui from 'firebaseui';
 // import 'firebaseui/dist/firebaseui.css';
-import { getFirestore } from "firebase/firestore";
+import { getFirestore } from "@firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
