@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../services/firebase-config';
-import SwitchBar from '../../components/SwitchBar/switchBar'; // Make sure this is the correct path to your component
-import '../../components/SwitchBar/switchBar.css'; // And the CSS for styling the switch bar
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../../services/firebase-config";
+import SwitchBar from "../../components/SwitchBar/switchBar"; // Make sure this is the correct path to your component
+import "../../components/SwitchBar/switchBar.css"; // And the CSS for styling the switch bar
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { createUser } from "../../services/userService";
 
 function Login() {
   let navigate = useNavigate();

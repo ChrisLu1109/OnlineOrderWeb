@@ -1,23 +1,29 @@
 import { db } from "./firebase-config";
-import { doc, setDoc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+  addDoc,
+  collection,
+} from "firebase/firestore";
 
 // Function to get a reference to a user document
 const getUserDocRef = (email) => {
   return doc(db, "User_Info", email);
 };
 
-export const createUser = async (user) => {
+export const addUser = async (user) => {
   try {
-    const userRef = getUserDocRef(user.email);
-    await setDoc(userRef, {
-      password: user.password, // It's generally not advised to store passwords in plaintext.
+    await addDoc(collection(db, "Users"), {
       firstName: user.firstName,
       lastName: user.lastName,
       allergy: user.allergy || [],
     });
-    console.log("User created successfully");
+    console.log("User added successfully");
   } catch (error) {
-    console.error("Error creating user: ", error);
+    console.error("Error adding user item: ", error);
   }
 };
 
