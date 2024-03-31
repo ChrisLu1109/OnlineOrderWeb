@@ -5,6 +5,8 @@ import SwitchBar from '../../components/SwitchBar/switchBar'; // Make sure this 
 import '../../components/SwitchBar/switchBar.css'; // And the CSS for styling the switch bar
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { db } from '../../services/firebase-config';
+import { doc, setDoc } from "firebase/firestore";
 
 function Login() {
   let navigate = useNavigate();
@@ -12,6 +14,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isLoginActive, setIsLoginActive] = useState(true); // State to toggle forms
   const [error, setError] = useState(""); // State to store authentication errors
+  const [name, setName] = useState(""); 
 
   const login = async () => {
     setError("");
@@ -37,12 +40,35 @@ function Login() {
         email,
         password
       );
-      console.log("User signed up", userCredential);
-      navigate("/dietary");
+      const user = userCredential.user;
+      // Assuming we want to store the user's name in Firestore under a 'users' collection
+      await setDoc(doc(db, "users", user.uid), {
+        name: name,
+        email: email,
+        // You can add more user info here
+      });
+      console.log("User signed up and information added to Firestore", user.uid);
+      navigate("/dietary"); // Redirect or handle post-signup logic
     } catch (error) {
       setError(error.message);
     }
   };
+
+  // const signUp = async () => {
+  //   setError("");
+  //   try {
+  //     const userCredential = await createUserWithEmailAndPassword(
+  //       auth,
+  //       email,
+  //       password
+  //     );
+  //     console.log("User signed up", userCredential);
+  //     navigate("/dietary");
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // };
+
 
   const signInWithGoogle = async () => {
     setError("");
@@ -131,6 +157,20 @@ function Login() {
           width: "100%",
         }}
       >
+      <input
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    placeholder="Name"
+    style={{
+      width: "100%",
+      padding: "15px",
+      marginBottom: "10px",
+      borderRadius: "5px",
+      border: "1px solid #ddd",
+      fontSize: "16px",
+    }}
+  />
         <input
           type="email"
           value={email}
