@@ -3,9 +3,26 @@ import classes from "./cartPage.module.css";
 import { useCart } from "../../hooks/useCart";
 import Title from "../../components/Title/Title";
 import { Link } from "react-router-dom";
+import { addOrder } from "../../services/orderService";
 
 export default function CartPage() {
   const { cart, removeFromCart, changeQuantity } = useCart();
+
+  const handleAddOrder = async () => {
+    const testOrder = {
+      id: 1,
+      userID: 1,
+      items: [1],
+    };
+
+    try {
+      await addOrder(testOrder);
+      alert("Test food item added successfully!");
+    } catch (error) {
+      console.error("Error adding test food item: ", error);
+      alert("Error adding test food item.");
+    }
+  };
 
   return (
     <>
@@ -25,8 +42,12 @@ export default function CartPage() {
                   <Link to={"/food/${item.food.id}"}>{item.food.name}</Link>
                 </div>
                 <div>
-                  <select value={item.quantity} 
-                  onChange={e => changeQuantity(item, Number(e.target.value))}>
+                  <select
+                    value={item.quantity}
+                    onChange={(e) =>
+                      changeQuantity(item, Number(e.target.value))
+                    }
+                  >
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -39,11 +60,12 @@ export default function CartPage() {
                   </select>
                   <div>Calories(kcals): {item.calories}</div>
                   <div>
-                    <button className={classes.remove_button} 
-                    onClick={() => removeFromCart(item.food.id)}
+                    <button
+                      className={classes.remove_button}
+                      onClick={() => removeFromCart(item.food.id)}
                     >
                       Remove
-                      </button>
+                    </button>
                   </div>
                 </div>
               </li>
@@ -55,7 +77,7 @@ export default function CartPage() {
               <div className={classes.food_calories}>{cart.totalCalories}</div>
             </div>
             <button className={classes.checkout_button}>
-              <Link to="/checkout">Checkout</Link>
+              <button onClick={handleAddOrder}>Checkout</button>
             </button>
           </div>
           <div></div>

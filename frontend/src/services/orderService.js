@@ -14,16 +14,16 @@ const getUserDocRef = (email) => {
   return doc(db, "User_Info", email);
 };
 
-export const addUser = async (user) => {
+export const addOrder = async (order) => {
   try {
-    await addDoc(collection(db, "Users"), {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      allergy: user.allergy || [],
+    await addDoc(collection(db, "Orders"), {
+      orderID: order.id,
+      userID: order.userID,
+      items: order.items,
     });
-    console.log("User added successfully");
+    console.log("Order added successfully");
   } catch (error) {
-    console.error("Error adding user: ", error);
+    console.error("Error adding order: ", error);
   }
 };
 
