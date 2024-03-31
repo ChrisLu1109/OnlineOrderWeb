@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../services/firebase-config';
-import SwitchBar from '../../components/SwitchBar/switchBar'; // Make sure this is the correct path to your component
-import '../../components/SwitchBar/switchBar.css'; // And the CSS for styling the switch bar
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { db } from '../../services/firebase-config';
+import React, { useState } from "react";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../../services/firebase-config";
+import SwitchBar from "../../components/SwitchBar/switchBar"; // Make sure this is the correct path to your component
+import "../../components/SwitchBar/switchBar.css"; // And the CSS for styling the switch bar
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { db } from "../../services/firebase-config";
 import { doc, setDoc } from "firebase/firestore";
 import { createUser } from "../../services/userService";
 
@@ -15,7 +18,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [isLoginActive, setIsLoginActive] = useState(true); // State to toggle forms
   const [error, setError] = useState(""); // State to store authentication errors
-  const [name, setName] = useState(""); 
+  const [name, setName] = useState("");
+  const [allergy, setAllergy] = useState([]);
 
   const login = async () => {
     setError("");
@@ -46,9 +50,12 @@ function Login() {
       await setDoc(doc(db, "users", user.uid), {
         name: name,
         email: email,
-        // You can add more user info here
+        allergy: allergy,
       });
-      console.log("User signed up and information added to Firestore", user.uid);
+      console.log(
+        "User signed up and information added to Firestore",
+        user.uid
+      );
       navigate("/dietary"); // Redirect or handle post-signup logic
     } catch (error) {
       setError(error.message);
@@ -69,7 +76,6 @@ function Login() {
   //     setError(error.message);
   //   }
   // };
-
 
   const signInWithGoogle = async () => {
     setError("");
@@ -158,20 +164,20 @@ function Login() {
           width: "100%",
         }}
       >
-      <input
-    type="text"
-    value={name}
-    onChange={(e) => setName(e.target.value)}
-    placeholder="Name"
-    style={{
-      width: "100%",
-      padding: "15px",
-      marginBottom: "10px",
-      borderRadius: "5px",
-      border: "1px solid #ddd",
-      fontSize: "16px",
-    }}
-  />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+          style={{
+            width: "100%",
+            padding: "15px",
+            marginBottom: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ddd",
+            fontSize: "16px",
+          }}
+        />
         <input
           type="email"
           value={email}

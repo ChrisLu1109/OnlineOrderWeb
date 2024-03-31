@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../services/firebase-config"; // Ensure these are correctly imported
+import { doc, updateDoc } from "firebase/firestore"; // Import updateDoc for updating a document
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +26,8 @@ function SearchBar({ onSearch }) {
   };
 
   const handleConfirmClick = () => {
-    navigate("/"); // This will navigate to the homepage
+    updateUserAllergies(selectedRestrictions); // Update allergies in Firestore
+    navigate("/"); // Then navigate to the homepage
   };
 
   useEffect(() => {
@@ -34,6 +37,23 @@ function SearchBar({ onSearch }) {
       onSearch(combinedTerm);
     }
   }, [selectedRestrictions, onSearch]);
+
+  const updateUserAllergies = async (allergies) => {
+    if (!auth.currentUser) {
+      console.error("No user is currently logged in.");
+      return;
+    }
+
+    const userDocRef = doc(db, "users", auth.currentUser.uid);
+    try {
+      await updateDoc(userDocRef, {
+        allergy: allergies,
+      });
+      console.log("User allergies updated in Firestore");
+    } catch (error) {
+      console.error("Error updating user allergies:", error);
+    }
+  };
 
   return (
     <div

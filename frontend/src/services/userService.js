@@ -19,6 +19,8 @@ export const addUser = async (user) => {
     await addDoc(collection(db, "Users"), {
       firstName: user.firstName,
       lastName: user.lastName,
+      phoneNumber: user.number,
+      userEmail: user.email,
       allergy: user.allergy || [],
     });
     console.log("User added successfully");
