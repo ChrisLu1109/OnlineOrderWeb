@@ -1,6 +1,6 @@
 import { sample_foods, sample_tags } from "../data";
 import { db } from "./firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 export const getAll = async () => sample_foods;
 
@@ -33,4 +33,10 @@ export const addFoodItem = async (foodItem) => {
   } catch (error) {
     console.error("Error adding food item: ", error);
   }
+};
+
+
+export const getFoods = async () => {
+  const data = await getDocs(collection(db, "foods"));
+  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 };
