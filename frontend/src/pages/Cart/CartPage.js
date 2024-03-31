@@ -1,26 +1,44 @@
-import React from "react";
-import classes from "./cartPage.module.css";
+import React, { useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import Title from "../../components/Title/Title";
 import { Link } from "react-router-dom";
-import { addOrder } from "../../services/orderService";
+import { db, auth } from "../../services/firebase-config";
+import { collection, addDoc } from "firebase/firestore";
+import classes from "./cartPage.module.css";
 
 export default function CartPage() {
   const { cart, removeFromCart, changeQuantity } = useCart();
+  const [orderStatus, setOrderStatus] = useState("in progress"); // State to hold the order status
 
   const handleAddOrder = async () => {
-    const testOrder = {
-      id: 1,
-      userID: 1,
-      items: [1],
+    const user = auth.currentUser; // Get the current user directly from Firebase Auth
+
+    if (!user) {
+      alert("You must be logged in to place an order.");
+      return;
+    }
+
+    // Construct the order object
+    const newOrder = {
+      userID: user.email,
+      orderstatus: orderStatus,
+      items: cart.items.map((item) => ({
+        id: item.food.id, // Assuming each item has a unique id
+        quantity: item.quantity,
+        calories: item.calories,
+        name: item.food.name, // Assuming you want to store the name of the food
+      })),
     };
 
     try {
-      await addOrder(testOrder);
-      alert("Test food item added successfully!");
+      // Add the new order to the 'orders' collection in Firestore
+      const docRef = await addDoc(collection(db, "orders"), newOrder);
+      console.log("Order added with ID: ", docRef.id);
+      alert("Order placed successfully!");
+      // Optionally reset the cart after the order is placed
     } catch (error) {
-      console.error("Error adding test food item: ", error);
-      alert("Error adding test food item.");
+      console.error("Error adding order: ", error);
+      alert("Error placing the order.");
     }
   };
 

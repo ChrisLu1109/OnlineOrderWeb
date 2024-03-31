@@ -70,8 +70,6 @@ export default function HomePage() {
       <Search />
       <Tags tags={tags} />
       <Thumbnails foods={foods} />
-      {/* Add a button to trigger the test food item addition */}
-      <button onClick={handleAddTestFood}>Add Test Food Item</button>
     </>
   );
 }

@@ -10,7 +10,6 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../services/firebase-config";
 import { doc, setDoc } from "firebase/firestore";
-import { createUser } from "../../services/userService";
 
 function Login() {
   let navigate = useNavigate();

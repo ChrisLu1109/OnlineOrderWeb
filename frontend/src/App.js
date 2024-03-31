@@ -39,19 +39,19 @@
 
 // export default App;
 
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import AppRoutes from './AppRoutes'; // Assuming this file exists and is in the correct path
-import Header from './components/Header/Header';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./AppRoutes"; // Assuming this file exists and is in the correct path
+import Header from "./components/Header/Header";
+import { AuthProvider } from "./AuthContext";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Header />
       <AppRoutes />
-    </>
+    </AuthProvider>
   );
 }
 
 export default App;
-
