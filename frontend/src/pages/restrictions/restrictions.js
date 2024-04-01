@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth, db } from "../../services/firebase-config"; // Ensure these are correctly imported
-import { doc, updateDoc } from "firebase/firestore"; // Import updateDoc for updating a document
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedRestrictions, setSelectedRestrictions] = useState([]);
   const navigate = useNavigate();
 
+  // Handles changes to the search input field
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
     if (onSearch) {
@@ -15,6 +14,7 @@ function SearchBar({ onSearch }) {
     }
   };
 
+  // Handles click events for each restriction button
   const handleButtonClick = (restriction) => {
     if (selectedRestrictions.includes(restriction)) {
       setSelectedRestrictions((current) =>
@@ -25,11 +25,12 @@ function SearchBar({ onSearch }) {
     }
   };
 
+  // Navigates back to the homepage and potentially could pass the selected restrictions
   const handleConfirmClick = () => {
-    updateUserAllergies(selectedRestrictions); // Update allergies in Firestore
-    navigate("/"); // Then navigate to the homepage
+    navigate("/", { state: { selectedRestrictions } }); // Passing state through navigation
   };
 
+  // Updates searchTerm when selectedRestrictions change
   useEffect(() => {
     const combinedTerm = selectedRestrictions.join(" + ");
     setSearchTerm(combinedTerm);
@@ -37,23 +38,6 @@ function SearchBar({ onSearch }) {
       onSearch(combinedTerm);
     }
   }, [selectedRestrictions, onSearch]);
-
-  const updateUserAllergies = async (allergies) => {
-    if (!auth.currentUser) {
-      console.error("No user is currently logged in.");
-      return;
-    }
-
-    const userDocRef = doc(db, "users", auth.currentUser.uid);
-    try {
-      await updateDoc(userDocRef, {
-        allergy: allergies,
-      });
-      console.log("User allergies updated in Firestore");
-    } catch (error) {
-      console.error("Error updating user allergies:", error);
-    }
-  };
 
   return (
     <div
@@ -106,24 +90,16 @@ function SearchBar({ onSearch }) {
           maxWidth: "1024px",
         }}
       >
-        {[
-          "Peanuts",
-          "Meat",
-          "Dairy",
-          "Vegan",
-          "Egg",
-          "Fish",
-          "Gluton",
-          "Soy",
-          "Nut",
-          "Alcohol",
-        ].map((restriction) => (
+        {["None", "Lacto-vegetarian", "Ovo-vegetarian",
+          "Lacto-ovo vegetarian", "Vegan", "Pescatarian", "Keto",
+          "Gluten-Free", "Dairy-Free", "Halal", "Kosher",
+          "Nut-Free", "Low Sodium", "Low Sugar", "Low Calories"].map((restriction) => (
           <button
             key={restriction}
             onClick={() => handleButtonClick(restriction)}
             style={{
-              width: "180px", // Set a fixed width
-              height: "50px", // Set a fixed height
+              width: "180px", 
+              height: "50px", 
               padding: "10px",
               margin: "5px",
               backgroundColor: selectedRestrictions.includes(restriction)
