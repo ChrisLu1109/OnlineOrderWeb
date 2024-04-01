@@ -35,7 +35,6 @@ export const addFoodItem = async (foodItem) => {
   }
 };
 
-
 export const getFoods = async () => {
   const data = await getDocs(collection(db, "foods"));
   return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
