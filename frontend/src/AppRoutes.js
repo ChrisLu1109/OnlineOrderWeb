@@ -47,6 +47,7 @@ import SearchBar from "./pages/restrictions/restrictions"; // Ensure the path is
 import CartPage from "./pages/Cart/CartPage";
 import Profile from "./pages/Profile/profile"; // Import the Profile component
 import AdminSetup from "./components/AdminSetup/AdminSetup";
+import OrderPage from "./pages/Order/Order";
 
 export default function AppRoutes() {
   return (
@@ -58,8 +59,10 @@ export default function AppRoutes() {
       <Route path="/food/:id" element={<FoodPage />} />
       <Route path="/dietary" element={<SearchBar />} />
       <Route path="/cart" element={<CartPage />} />
-      <Route path="/profile" element={<Profile />} /> {/* New route for the Profile page */}
+      <Route path="/profile" element={<Profile />} />{" "}
+      {/* New route for the Profile page */}
       <Route path="/admin/setup" element={<AdminSetup />} />
+      <Route path="/order" element={<OrderPage />} />
     </Routes>
   );
 }

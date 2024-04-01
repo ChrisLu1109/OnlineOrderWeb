@@ -116,10 +116,38 @@
     color: gray;
 }
 .checkout .food_calories{
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .checkout .food_calories::before{
     content: 'Calories(kcals): ';
     color: gray;
+}
+
+.clear_cart_button{
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    color: red;
+    opacity: 0.7;
+    outline: none;
+    margin-top: 1.5rem; /* Adds space above the clear cart button */
+    background-color: white; /* Optional: match the remove button or choose a different background */
+    cursor: pointer;
+}
+
+.clear_cart_button:hover{
+    opacity: 1;
+}
+
+.warning {
+    border: 1px solid red; /* Red border around the warning box */
+    background-color: #FFCCCC; /* Light red background color */
+    color: red; /* Red text color */
+    padding: 2px; /* Some padding around the text */
+    margin: 2px 0; /* Some margin above and below the warning box */
+    font-size: 0.5rem; /* Smaller font size than your count/calories */
+    text-align: center; /* Center the text inside the warning box */
+    border-radius: 0.5rem; /* Rounded corners for the box */
+    box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.2); /* Slight shadow for some depth */
 }

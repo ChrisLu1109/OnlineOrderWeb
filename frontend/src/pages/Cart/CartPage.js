@@ -1,14 +1,85 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
+import { db, auth } from "../../services/firebase-config";
+import classes from "./cartPage.module.css";
 import { useCart } from "../../hooks/useCart";
 import Title from "../../components/Title/Title";
-import { Link } from "react-router-dom";
-import { db, auth } from "../../services/firebase-config";
-import { collection, addDoc } from "firebase/firestore";
-import classes from "./cartPage.module.css";
 
 export default function CartPage() {
-  const { cart, removeFromCart, changeQuantity } = useCart();
-  const [orderStatus, setOrderStatus] = useState("in progress"); // State to hold the order status
+  const { cart, removeFromCart, changeQuantity, clearCart } = useCart();
+  const [orderStatus] = useState("in progress");
+  const [userAllergies, setUserAllergies] = useState([]);
+  const [allergicItems, setAllergicItems] = useState([]);
+
+  useEffect(() => {
+    const fetchUserAllergies = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setUserAllergies(userSnap.data().allergy || []);
+        }
+      }
+    };
+
+    fetchUserAllergies();
+  }, []);
+
+  useEffect(() => {
+    const fetchAllergensForCartItems = async () => {
+      // Map over cart items and create promises to fetch their allergens
+      const promises = cart.items.map(async (item) => {
+        const q = query(
+          collection(db, "foods"),
+          where("name", "==", item.food.name)
+        );
+        const querySnapshot = await getDocs(q);
+        let allergens = [];
+        querySnapshot.forEach((doc) => {
+          // Assuming that the document data has an 'allergy' field that is an array
+          allergens = doc.data().allergy || [];
+          console.log(`Details for ${item.food.name}:`, {
+            id: item.food.id,
+            name: item.food.name,
+            allergens: allergens,
+            ...doc.data(), // Spread all properties of the document data
+          });
+        });
+        return { id: item.food.id, name: item.food.name, allergens };
+      });
+
+      // Wait for all promises to resolve
+      const itemsWithAllergens = await Promise.all(promises);
+      console.log("Items with allergens:", itemsWithAllergens);
+
+      // Filter items to find any that contain allergens the user is allergic to
+      const allergicItemsFound = itemsWithAllergens.filter((item) =>
+        item.allergens.some((allergen) => userAllergies.includes(allergen))
+      );
+
+      console.log("Allergic items found:", allergicItemsFound);
+      setAllergicItems(allergicItemsFound);
+    };
+
+    if (cart.items.length > 0 && userAllergies.length > 0) {
+      fetchAllergensForCartItems();
+    }
+  }, [cart, userAllergies]);
+
+  // Check if there are any allergic items
+  const containsAllergicItems = () => {
+    return allergicItems.length > 0;
+  };
 
   const handleAddOrder = async () => {
     const user = auth.currentUser; // Get the current user directly from Firebase Auth
@@ -35,7 +106,9 @@ export default function CartPage() {
       const docRef = await addDoc(collection(db, "orders"), newOrder);
       console.log("Order added with ID: ", docRef.id);
       alert("Order placed successfully!");
-      // Optionally reset the cart after the order is placed
+
+      // Clear the cart here
+      clearCart(); // Call the method to clear the cart
     } catch (error) {
       console.error("Error adding order: ", error);
       alert("Error placing the order.");
@@ -57,7 +130,7 @@ export default function CartPage() {
                   />
                 </div>
                 <div>
-                  <Link to={"/food/${item.food.id}"}>{item.food.name}</Link>
+                  <Link to={`/food/${item.food.id}`}>{item.food.name}</Link>
                 </div>
                 <div>
                   <select
@@ -94,8 +167,17 @@ export default function CartPage() {
               <div className={classes.food_count}>{cart.totalCount}</div>
               <div className={classes.food_calories}>{cart.totalCalories}</div>
             </div>
+            {/* Total count and calories display */}
+            {containsAllergicItems() && (
+              <div className={classes.warning}>
+                Warning: There are items in your cart that match your allergies!
+              </div>
+            )}
             <button className={classes.checkout_button}>
               <button onClick={handleAddOrder}>Checkout</button>
+            </button>
+            <button onClick={clearCart} className={classes.clear_cart_button}>
+              Clear Cart
             </button>
           </div>
           <div></div>

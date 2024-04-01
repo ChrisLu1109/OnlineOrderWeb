@@ -9,7 +9,7 @@ import "../../components/SwitchBar/switchBar.css"; // And the CSS for styling th
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../services/firebase-config";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 function Login() {
   let navigate = useNavigate();
@@ -80,8 +80,25 @@ function Login() {
     setError("");
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
-      console.log("User signed in with Google");
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Check if the user already exists in Firestore
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+        // If the user doesn't exist, add them to Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          name: user.displayName, // Using the name from Google account
+          email: user.email, // Using the email from Google account
+          allergy: [], // Default value, or you could try to collect this info before/during sign in
+        });
+        console.log("User information added to Firestore");
+      } else {
+        console.log("User already exists in Firestore");
+      }
+
       navigate("/dietary");
     } catch (error) {
       setError(error.message);

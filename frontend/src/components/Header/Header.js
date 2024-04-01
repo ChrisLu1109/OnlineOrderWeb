@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./header.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
@@ -22,13 +22,11 @@ export default function Header() {
   const logout = async () => {
     try {
       await auth.signOut();
-      navigate('/'); // Redirect to login page after logout
+      navigate("/"); // Redirect to login page after logout
     } catch (error) {
       console.error("Error signing out: ", error);
     }
   };
-
-
 
   // const logout = () => {};
 
@@ -42,24 +40,46 @@ export default function Header() {
           <ul>
             {currentUser ? (
               <li className={classes.menu_container}>
-                <Link to="/profile">{currentUser.displayName || currentUser.email}</Link>
+                <Link to="/profile">
+                  {currentUser.displayName || currentUser.email}
+                </Link>
                 <div className={classes.menu}>
                   <Link to="/profile">Profile</Link>
-                  <Link to="/order">Orders</Link>
-                  <a href="/#" onClick={(e) => { e.preventDefault(); logout(); }}>Logout</a>
+                  <Link to="/order">Order</Link>
+                  <a
+                    href="/#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      logout();
+                    }}
+                  >
+                    Logout
+                  </a>
                 </div>
               </li>
             ) : (
-              <Link to="/login">Login</Link>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
             )}
 
             <li>
-              <Link to="/cart">
-                Cart
-                {cart.totalCount > 0 && (
-                  <span className={classes.cart_count}>{cart.totalCount}</span>
-                )}
-              </Link>
+              {currentUser ? (
+                <Link to="/cart">
+                  Cart
+                  {cart.totalCount > 0 ? (
+                    <span className={classes.cart_count}>
+                      {cart.totalCount}
+                    </span>
+                  ) : (
+                    <span className={classes.cart_count}>0</span>
+                  )}
+                </Link>
+              ) : (
+                <Link to="/login">
+                  Cart <span className={classes.cart_count}>0</span>
+                </Link>
+              )}
             </li>
           </ul>
         </nav>
