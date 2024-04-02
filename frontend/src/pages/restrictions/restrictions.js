@@ -90,36 +90,38 @@ function SearchBar({ onSearch }) {
           maxWidth: "1024px",
         }}
       >
-        {["Peanuts", "Dairy", "Meat", "Eggs", "Alcohol"].map((restriction) => (
-          <button
-            key={restriction}
-            onClick={() => handleButtonClick(restriction)}
-            style={{
-              width: "180px",
-              height: "50px",
-              padding: "10px",
-              margin: "5px",
-              backgroundColor: selectedRestrictions.includes(restriction)
-                ? "#007bff"
-                : "#f0f0f0",
-              color: selectedRestrictions.includes(restriction)
-                ? "white"
-                : "black",
-              border: "none",
-              borderRadius: "20px",
-              cursor: "pointer",
-              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            {restriction}
-          </button>
-        ))}
+        {["Peanuts", "Dairy", "Meat", "Eggs", "Alcohol", "Fried"].map(
+          (restriction) => (
+            <button
+              key={restriction}
+              onClick={() => handleButtonClick(restriction)}
+              style={{
+                width: "180px",
+                height: "50px",
+                padding: "10px",
+                margin: "5px",
+                backgroundColor: selectedRestrictions.includes(restriction)
+                  ? "#007bff"
+                  : "#f0f0f0",
+                color: selectedRestrictions.includes(restriction)
+                  ? "white"
+                  : "black",
+                border: "none",
+                borderRadius: "20px",
+                cursor: "pointer",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {restriction}
+            </button>
+          )
+        )}
       </div>
     </div>
   );

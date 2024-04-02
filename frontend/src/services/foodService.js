@@ -109,33 +109,24 @@ export const addFoodItem = async (foodItem) => {
   }
 };
 
-// Fetch foods that comply with selected dietary restrictions
-export const getFoodsByDietaryRestrictions = async (restrictions) => {
+// Fetch foods excluding those that contain allergens the user is allergic to
+export const getFoodsByDietaryRestrictions = async (userAllergies) => {
   const foodsCollectionRef = collection(db, "foods");
 
-  // If no restrictions are selected, return all foods
-  if (restrictions.length === 0) {
-    return getAll();
-  }
+  // Fetch all foods from the database
+  const querySnapshot = await getDocs(foodsCollectionRef);
+  const allFoods = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 
-  // Create a combined query based on selected restrictions
-  const combinedQueries = restrictions.map((restriction) => {
-    return query(
-      foodsCollectionRef,
-      where(`dietaryRestrictions.${restriction}`, "==", true)
-    );
+  // Filter out foods that contain any of the user's allergens
+  const safeFoods = allFoods.filter((food) => {
+    // Assuming food.allergy is an array of allergens as shown in your database screenshot
+    const foodAllergens = food.allergy || [];
+    // Check if there's any overlap between user allergies and food allergens
+    return !foodAllergens.some((allergen) => userAllergies.includes(allergen));
   });
 
-  // Execute each query and combine the results
-  const foods = [];
-  for (let q of combinedQueries) {
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      const food = { id: doc.id, ...doc.data() };
-      if (!foods.some((f) => f.id === food.id)) {
-        foods.push(food);
-      }
-    });
-  }
-  return foods;
+  return safeFoods;
 };
