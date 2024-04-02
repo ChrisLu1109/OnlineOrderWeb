@@ -1,0 +1,347 @@
+[debug] [2024-04-02T06:21:06.654Z] ----------------------------------------------------------------------
+[debug] [2024-04-02T06:21:06.654Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2024-04-02T06:21:06.655Z] CLI Version:   13.6.0
+[debug] [2024-04-02T06:21:06.655Z] Platform:      darwin
+[debug] [2024-04-02T06:21:06.655Z] Node Version:  v18.17.0
+[debug] [2024-04-02T06:21:06.655Z] Time:          Tue Apr 02 2024 01:21:06 GMT-0500 (Central Daylight Time)
+[debug] [2024-04-02T06:21:06.656Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-02T06:21:06.684Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-02T06:21:06.684Z] > authorizing via signed-in user (qianyi.huang@vanderbilt.edu)
+[debug] [2024-04-02T06:21:06.684Z] [iam] checking project wuhealth-f19ba for permissions ["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]
+[debug] [2024-04-02T06:21:06.685Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions [none]
+[debug] [2024-04-02T06:21:06.685Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:06.685Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create",null]}
+[debug] [2024-04-02T06:21:06.835Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions 200
+[debug] [2024-04-02T06:21:06.835Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2024-04-02T06:21:06.835Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project wuhealth-f19ba:
+
+  
+[debug] [2024-04-02T06:21:06.835Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/wuhealth-f19ba/serviceAccounts/wuhealth-f19ba@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-04-02T06:21:06.836Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/wuhealth-f19ba/serviceAccounts/wuhealth-f19ba@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-04-02T06:21:07.007Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/wuhealth-f19ba/serviceAccounts/wuhealth-f19ba@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-04-02T06:21:07.007Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/wuhealth-f19ba/serviceAccounts/wuhealth-f19ba@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-04-02T06:21:07.009Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba [none]
+[debug] [2024-04-02T06:21:07.255Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba 200
+[debug] [2024-04-02T06:21:07.255Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba {"projectId":"wuhealth-f19ba","projectNumber":"238930998501","displayName":"2301Dining","name":"projects/wuhealth-f19ba","resources":{"hostingSite":"wuhealth-f19ba","realtimeDatabaseInstance":"wuhealth-f19ba-default-rtdb","storageBucket":"wuhealth-f19ba.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_29eb8ccf-bb72-4662-9b4c-460d330491f1"}
+[debug] [2024-04-02T06:21:07.255Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba [none]
+[debug] [2024-04-02T06:21:07.460Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba 200
+[debug] [2024-04-02T06:21:07.461Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba {"projectId":"wuhealth-f19ba","projectNumber":"238930998501","displayName":"2301Dining","name":"projects/wuhealth-f19ba","resources":{"hostingSite":"wuhealth-f19ba","realtimeDatabaseInstance":"wuhealth-f19ba-default-rtdb","storageBucket":"wuhealth-f19ba.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_29eb8ccf-bb72-4662-9b4c-460d330491f1"}
+[info] 
+[info] === Deploying to 'wuhealth-f19ba'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting, remoteconfig, extensions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[info] i  database: checking rules syntax... 
+[debug] [2024-04-02T06:21:07.857Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/wuhealth-f19ba/locations/-/instances/wuhealth-f19ba-default-rtdb [none]
+[debug] [2024-04-02T06:21:08.292Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/wuhealth-f19ba/locations/-/instances/wuhealth-f19ba-default-rtdb 200
+[debug] [2024-04-02T06:21:08.292Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/wuhealth-f19ba/locations/-/instances/wuhealth-f19ba-default-rtdb {"name":"projects/238930998501/locations/us-central1/instances/wuhealth-f19ba-default-rtdb","project":"projects/238930998501","databaseUrl":"https://wuhealth-f19ba-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2024-04-02T06:21:08.294Z] >>> [apiv2][query] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json dryRun=true
+[debug] [2024-04-02T06:21:08.294Z] >>> [apiv2][body] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json "{\n  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */\n  \"rules\": {\n    \".read\": false,\n    \".write\": false\n  }\n}"
+[debug] [2024-04-02T06:21:08.501Z] <<< [apiv2][status] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2024-04-02T06:21:08.501Z] <<< [apiv2][body] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] ✔  database: rules syntax for database wuhealth-f19ba-default-rtdb is valid 
+[info] i  storage: ensuring required API firebasestorage.googleapis.com is enabled... 
+[debug] [2024-04-02T06:21:08.504Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebasestorage.googleapis.com [none]
+[debug] [2024-04-02T06:21:08.504Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebasestorage.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:09.014Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebasestorage.googleapis.com 200
+[debug] [2024-04-02T06:21:09.014Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebasestorage.googleapis.com [omitted]
+[info] ✔  storage: required API firebasestorage.googleapis.com is enabled 
+[debug] [2024-04-02T06:21:09.015Z] >>> [apiv2][query] GET https://firebasestorage.googleapis.com/v1alpha/projects/wuhealth-f19ba/defaultBucket [none]
+[debug] [2024-04-02T06:21:09.521Z] <<< [apiv2][status] GET https://firebasestorage.googleapis.com/v1alpha/projects/wuhealth-f19ba/defaultBucket 200
+[debug] [2024-04-02T06:21:09.522Z] <<< [apiv2][body] GET https://firebasestorage.googleapis.com/v1alpha/projects/wuhealth-f19ba/defaultBucket {"name":"projects/wuhealth-f19ba/defaultBucket","location":"US","bucket":{"name":"projects/wuhealth-f19ba/buckets/wuhealth-f19ba.appspot.com"}}
+[info] i  firebase.storage: checking storage.rules for compilation errors... 
+[debug] [2024-04-02T06:21:09.524Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test [none]
+[debug] [2024-04-02T06:21:09.524Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test [omitted]
+[debug] [2024-04-02T06:21:09.771Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test 200
+[debug] [2024-04-02T06:21:09.771Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test {}
+[info] ✔  firebase.storage: rules file storage.rules compiled successfully 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2024-04-02T06:21:09.774Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test [none]
+[debug] [2024-04-02T06:21:09.774Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test [omitted]
+[debug] [2024-04-02T06:21:09.977Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test 200
+[debug] [2024-04-02T06:21:09.978Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba:test {}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2024-04-02T06:21:09.980Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba [none]
+[debug] [2024-04-02T06:21:10.340Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba 200
+[debug] [2024-04-02T06:21:10.341Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba {"projectId":"wuhealth-f19ba","projectNumber":"238930998501","displayName":"2301Dining","name":"projects/wuhealth-f19ba","resources":{"hostingSite":"wuhealth-f19ba","realtimeDatabaseInstance":"wuhealth-f19ba-default-rtdb","storageBucket":"wuhealth-f19ba.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_29eb8ccf-bb72-4662-9b4c-460d330491f1"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-04-02T06:21:10.343Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-04-02T06:21:10.343Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:10.347Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-04-02T06:21:10.347Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:10.349Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudbuild.googleapis.com [none]
+[debug] [2024-04-02T06:21:10.349Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudbuild.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:10.351Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/artifactregistry.googleapis.com [none]
+[debug] [2024-04-02T06:21:10.351Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/artifactregistry.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:10.753Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/runtimeconfig.googleapis.com 200
+[debug] [2024-04-02T06:21:10.753Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-04-02T06:21:10.754Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/artifactregistry.googleapis.com 200
+[debug] [2024-04-02T06:21:10.754Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-04-02T06:21:10.755Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudbuild.googleapis.com 200
+[debug] [2024-04-02T06:21:10.756Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-04-02T06:21:10.756Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudfunctions.googleapis.com 200
+[debug] [2024-04-02T06:21:10.756Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-04-02T06:21:10.757Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba/adminSdkConfig [none]
+[debug] [2024-04-02T06:21:11.262Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba/adminSdkConfig 200
+[debug] [2024-04-02T06:21:11.262Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba/adminSdkConfig {"projectId":"wuhealth-f19ba","databaseURL":"https://wuhealth-f19ba-default-rtdb.firebaseio.com","storageBucket":"wuhealth-f19ba.appspot.com","locationId":"us-central"}
+[debug] [2024-04-02T06:21:11.263Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/wuhealth-f19ba/configs [none]
+[debug] [2024-04-02T06:21:11.516Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/wuhealth-f19ba/configs 200
+[debug] [2024-04-02T06:21:11.516Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/wuhealth-f19ba/configs {}
+[debug] [2024-04-02T06:21:11.518Z] Validating nodejs source
+[debug] [2024-04-02T06:21:11.837Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-04-02T06:21:11.837Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-04-02T06:21:11.837Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-04-02T06:21:11.841Z] Found firebase-functions binary at '/Users/nataliehuang/Desktop/OnlineOrderWeb/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8094
+
+[debug] [2024-04-02T06:21:11.922Z] Got response from /__/functions.yaml {"endpoints":{},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2024-04-02T06:21:11.926Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/wuhealth-f19ba/locations/-/functions [none]
+[debug] [2024-04-02T06:21:12.593Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/wuhealth-f19ba/locations/-/functions 200
+[debug] [2024-04-02T06:21:12.593Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/wuhealth-f19ba/locations/-/functions {}
+[debug] [2024-04-02T06:21:12.594Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/wuhealth-f19ba/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-04-02T06:21:13.207Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/wuhealth-f19ba/locations/-/functions 200
+[debug] [2024-04-02T06:21:13.208Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/wuhealth-f19ba/locations/-/functions {}
+[debug] [2024-04-02T06:21:13.215Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions [none]
+[debug] [2024-04-02T06:21:13.215Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2024-04-02T06:21:14.129Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions 200
+[debug] [2024-04-02T06:21:14.130Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions {"name":"projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2024-04-02T06:21:14.132Z] >>> [apiv2][query] GET https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig 
+[debug] [2024-04-02T06:21:14.404Z] <<< [apiv2][status] GET https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig 200
+[debug] [2024-04-02T06:21:14.404Z] <<< [apiv2][body] GET https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig {"version":{"versionNumber":"7","updateTime":"2024-04-02T05:58:11.500691Z","updateUser":{"email":"qianyi.huang@vanderbilt.edu"},"updateOrigin":"REST_API","updateType":"INCREMENTAL_UPDATE"}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2024-04-02T06:21:14.405Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebaseextensions.googleapis.com [none]
+[debug] [2024-04-02T06:21:14.405Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebaseextensions.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:14.847Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebaseextensions.googleapis.com 200
+[debug] [2024-04-02T06:21:14.847Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/firebaseextensions.googleapis.com [omitted]
+[info] ✔  extensions: required API firebaseextensions.googleapis.com is enabled 
+[debug] [2024-04-02T06:21:14.848Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-02T06:21:14.848Z] > authorizing via signed-in user (qianyi.huang@vanderbilt.edu)
+[debug] [2024-04-02T06:21:14.848Z] [iam] checking project wuhealth-f19ba for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2024-04-02T06:21:14.849Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions [none]
+[debug] [2024-04-02T06:21:14.849Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:14.849Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2024-04-02T06:21:14.985Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions 200
+[debug] [2024-04-02T06:21:14.985Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2024-04-02T06:21:14.986Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/wuhealth-f19ba/instances pageSize=100&pageToken=
+[debug] [2024-04-02T06:21:15.358Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/wuhealth-f19ba/instances 200
+[debug] [2024-04-02T06:21:15.358Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/wuhealth-f19ba/instances {}
+[info] i  extensions: ensuring required API compute.googleapis.com is enabled... 
+[debug] [2024-04-02T06:21:15.360Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/compute.googleapis.com [none]
+[debug] [2024-04-02T06:21:15.360Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/compute.googleapis.com x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:16.003Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/compute.googleapis.com 200
+[debug] [2024-04-02T06:21:16.003Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/wuhealth-f19ba/services/compute.googleapis.com [omitted]
+[info] ✔  extensions: required API compute.googleapis.com is enabled 
+[debug] [2024-04-02T06:21:16.004Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba [none]
+[debug] [2024-04-02T06:21:16.240Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba 200
+[debug] [2024-04-02T06:21:16.240Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/wuhealth-f19ba {"projectId":"wuhealth-f19ba","projectNumber":"238930998501","displayName":"2301Dining","name":"projects/wuhealth-f19ba","resources":{"hostingSite":"wuhealth-f19ba","realtimeDatabaseInstance":"wuhealth-f19ba-default-rtdb","storageBucket":"wuhealth-f19ba.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_29eb8ccf-bb72-4662-9b4c-460d330491f1"}
+[debug] [2024-04-02T06:21:16.241Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:getIamPolicy [none]
+[debug] [2024-04-02T06:21:16.512Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:getIamPolicy 200
+[debug] [2024-04-02T06:21:16.513Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:getIamPolicy {"version":1,"etag":"BwYVFmj6hp0=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:238930998501@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-238930998501@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.developer","members":["serviceAccount:github-action-775280428@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-238930998501@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/compute.serviceAgent","members":["serviceAccount:service-238930998501@compute-system.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-238930998501@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:238930998501-compute@developer.gserviceaccount.com","serviceAccount:238930998501@cloudservices.gserviceaccount.com","serviceAccount:wuhealth-f19ba@appspot.gserviceaccount.com","user:mingyuan.li@vanderbilt.edu","user:zichong.lu@vanderbilt.edu"]},{"role":"roles/eventarc.eventReceiver","members":["serviceAccount:238930998501-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:firebase-service-account@firebase-sa-management.iam.gserviceaccount.com","serviceAccount:service-238930998501@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-xcau2@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-xcau2@wuhealth-f19ba.iam.gserviceaccount.com","serviceAccount:github-action-775280428@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/firebasehosting.admin","members":["serviceAccount:github-action-775280428@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-238930998501@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.firestoreServiceAgent","members":["serviceAccount:service-238930998501@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-238930998501@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-238930998501@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-238930998501@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-xcau2@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:qianyi.huang@vanderbilt.edu"]},{"role":"roles/run.viewer","members":["serviceAccount:github-action-775280428@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.apiKeysViewer","members":["serviceAccount:github-action-775280428@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/serviceusage.serviceUsageConsumer","members":["serviceAccount:github-action-775280428@wuhealth-f19ba.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-xcau2@wuhealth-f19ba.iam.gserviceaccount.com"]}]}
+[debug] [2024-04-02T06:21:16.513Z] Compute Service API Agent IAM policy OK
+[debug] [2024-04-02T06:21:16.514Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-02T06:21:16.514Z] > authorizing via signed-in user (qianyi.huang@vanderbilt.edu)
+[debug] [2024-04-02T06:21:16.514Z] [iam] checking project wuhealth-f19ba for permissions ["firebase.projects.get"]
+[debug] [2024-04-02T06:21:16.514Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions [none]
+[debug] [2024-04-02T06:21:16.514Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions x-goog-quota-user=projects/wuhealth-f19ba
+[debug] [2024-04-02T06:21:16.514Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-04-02T06:21:16.699Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions 200
+[debug] [2024-04-02T06:21:16.699Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/wuhealth-f19ba:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-04-02T06:21:16.700Z] Checking if latest AppDeveloper TOS has been accepted by wuhealth-f19ba...
+[info] i  extensions: By installing an extension instance onto a Firebase project, you accept the Firebase Extensions User Terms of Service: https://firebase.google.com/terms/extensions/user 
+[debug] [2024-04-02T06:21:16.701Z] >>> [apiv2][query] GET https://firebaseextensionstos-pa.googleapis.com/v1/projects/wuhealth-f19ba/appdevtos [none]
+[debug] [2024-04-02T06:21:17.016Z] <<< [apiv2][status] GET https://firebaseextensionstos-pa.googleapis.com/v1/projects/wuhealth-f19ba/appdevtos 200
+[debug] [2024-04-02T06:21:17.017Z] <<< [apiv2][body] GET https://firebaseextensionstos-pa.googleapis.com/v1/projects/wuhealth-f19ba/appdevtos {"name":"projects/wuhealth-f19ba/appdevtos","latestTosVersion":"v1"}
+[debug] [2024-04-02T06:21:19.979Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases pageSize=10&pageToken=
+[debug] [2024-04-02T06:21:20.202Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases 200
+[debug] [2024-04-02T06:21:20.202Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases {"releases":[{"name":"projects/wuhealth-f19ba/releases/cloud.firestore","rulesetName":"projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702","createTime":"2024-03-27T23:28:35.245357Z","updateTime":"2024-04-02T05:58:09.690956Z"},{"name":"projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com","rulesetName":"projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335","createTime":"2024-04-02T03:56:20.976953Z","updateTime":"2024-04-02T05:58:09.315168Z"}]}
+[debug] [2024-04-02T06:21:20.217Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335 [none]
+[debug] [2024-04-02T06:21:20.426Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335 200
+[debug] [2024-04-02T06:21:20.426Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335 [omitted]
+[info] i  storage: latest version of storage.rules already up to date, skipping upload... 
+[info] i  firestore: deploying indexes... 
+[debug] [2024-04-02T06:21:20.429Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases pageSize=10&pageToken=
+[debug] [2024-04-02T06:21:20.432Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/wuhealth-f19ba/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2024-04-02T06:21:20.648Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases 200
+[debug] [2024-04-02T06:21:20.649Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases {"releases":[{"name":"projects/wuhealth-f19ba/releases/cloud.firestore","rulesetName":"projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702","createTime":"2024-03-27T23:28:35.245357Z","updateTime":"2024-04-02T05:58:09.690956Z"},{"name":"projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com","rulesetName":"projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335","createTime":"2024-04-02T03:56:20.976953Z","updateTime":"2024-04-02T05:58:09.315168Z"}]}
+[debug] [2024-04-02T06:21:20.649Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702 [none]
+[debug] [2024-04-02T06:21:20.732Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/wuhealth-f19ba/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2024-04-02T06:21:20.732Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/wuhealth-f19ba/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2024-04-02T06:21:20.732Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/wuhealth-f19ba/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2024-04-02T06:21:20.900Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702 200
+[debug] [2024-04-02T06:21:20.900Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702 [omitted]
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload... 
+[debug] [2024-04-02T06:21:21.006Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/wuhealth-f19ba/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2024-04-02T06:21:21.006Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/wuhealth-f19ba/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/wuhealth-f19ba/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully for (default) database 
+[info] i  hosting[wuhealth-f19ba]: beginning deploy... 
+[info] i  hosting[wuhealth-f19ba]: found 19 files in frontend/build 
+[debug] [2024-04-02T06:21:21.011Z] [hosting] uploading with 200 concurrency
+[debug] [2024-04-02T06:21:21.012Z] [hosting] hash cache [ZnJvbnRlbmQvYnVpbGQ] not populated
+[debug] [2024-04-02T06:21:21.263Z] [hosting] unable to store hash cache [ZnJvbnRlbmQvYnVpbGQ]: Error: EACCES: permission denied, open '/Users/nataliehuang/Desktop/OnlineOrderWeb/.firebase/hosting.ZnJvbnRlbmQvYnVpbGQ.cache'
+    at Object.openSync (node:fs:603:3)
+    at Object.writeFileSync (node:fs:2324:35)
+    at Object.outputFileSync (/usr/local/lib/node_modules/firebase-tools/node_modules/fs-extra/lib/output-file/index.js:31:15)
+    at dump (/usr/local/lib/node_modules/firebase-tools/lib/deploy/hosting/hashcache.js:41:12)
+    at /usr/local/lib/node_modules/firebase-tools/lib/deploy/hosting/uploader.js:81:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[debug] [2024-04-02T06:21:21.263Z] [hosting][hash queue][FINAL] {"max":248,"min":3,"avg":22.157894736842106,"active":0,"complete":19,"success":19,"errored":0,"retried":0,"total":19,"elapsed":251}
+[debug] [2024-04-02T06:21:21.263Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836:populateFiles [none]
+[debug] [2024-04-02T06:21:21.263Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836:populateFiles {"files":{"/asset-manifest.json":"44b92f02292f17584368043149098f490296ab33a997f3611350f9161bb4df18","/index.html":"8afe9da5204b601c6f8129d39b3154dc14e085e69ba8093876f55ccc85cb70c1","/manifest.json":"341d52628782f8ac9290bbfc43298afccb47b7cbfcee146ae30cf0f46bc30900","/favicon.ico":"b72f7455f00e4e58792d2bca892abb068e2213838c0316d6b7a0d6d16acd1955","/robots.txt":"391d14b3c2f8c9143a27a28c7399585142228d4d1bdbe2c87ac946de411fa9a2","/logo192.png":"caff018b7f1e8fd481eb1c50d75b0ef236bcd5078b1d15c8bb348453fee30293","/logo512.png":"191fc21360b4ccfb1cda11a1efb97f489ed22672ca83f4064316802bbfdd750e","/images/google_logo.png":"cee7f34cd567e59de767fc08b75772ec6e672f03dba83605090a2a314ece8511","/static/css/main.258c2ab7.css":"34fd5b958494c095f071437c3592043a3ed76f560ef172ef4307856f77ad751d","/static/js/453.8ab44547.chunk.js":"ee2a88b42dc6de713ae218bf8f94ddc10cfdca1c4ee8d59f545fc2d866837907","/static/js/main.b1e4117d.js.LICENSE.txt":"d840d3fce21e0ad5aac21bd529b293c7fe5858973e070ed41ffd9566d4df62c3","/static/css/main.258c2ab7.css.map":"5a5d0f5e8eebba91e8d97656504d5991e63733295be8e445b4add9cd998051e2","/static/js/453.8ab44547.chunk.js.map":"3355a9e3db8cafbd4d08989db24f597880637319b02fd0d4a0e50416f60bc01f","/foods/chicken.jpg":"28597e8f6dc39fa5299647cf2114d6c9231763ecc37a5eb6811ee8c735fa3392","/foods/fried_chiekcn.jpg":"92b3e059acf685cfe704acb591ae7fe6af91884101f23b5e90f840b5148b1ca7","/foods/beef.jpg":"635b26d5ac27c32315e6e92b67bbbb27ddea9d5a0ac426acd9c86c3c467ec2fe","/static/js/main.b1e4117d.js":"99ddbeb81289fb3ed48c723cadefbdebe3926a2127dcbc00ceb84e6e0040f38d","/foods/green_pepper.png":"0fa5517287dde4850dcd12324827145569cadfbefe1dc5793ad3996e137988f8","/static/js/main.b1e4117d.js.map":"b303118ab29573802e50fe99327d21c81ec35ed35cc4a303ed2db3714d99a1d9"}}
+[debug] [2024-04-02T06:21:21.762Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836:populateFiles 200
+[debug] [2024-04-02T06:21:21.762Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836:populateFiles {"uploadRequiredHashes":["b303118ab29573802e50fe99327d21c81ec35ed35cc4a303ed2db3714d99a1d9","99ddbeb81289fb3ed48c723cadefbdebe3926a2127dcbc00ceb84e6e0040f38d","8afe9da5204b601c6f8129d39b3154dc14e085e69ba8093876f55ccc85cb70c1","92b3e059acf685cfe704acb591ae7fe6af91884101f23b5e90f840b5148b1ca7","44b92f02292f17584368043149098f490296ab33a997f3611350f9161bb4df18","34fd5b958494c095f071437c3592043a3ed76f560ef172ef4307856f77ad751d","5a5d0f5e8eebba91e8d97656504d5991e63733295be8e445b4add9cd998051e2"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files"}
+[debug] [2024-04-02T06:21:21.764Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/b303118ab29573802e50fe99327d21c81ec35ed35cc4a303ed2db3714d99a1d9 [none]
+[debug] [2024-04-02T06:21:21.764Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/b303118ab29573802e50fe99327d21c81ec35ed35cc4a303ed2db3714d99a1d9 [stream]
+[debug] [2024-04-02T06:21:21.766Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/99ddbeb81289fb3ed48c723cadefbdebe3926a2127dcbc00ceb84e6e0040f38d [none]
+[debug] [2024-04-02T06:21:21.766Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/99ddbeb81289fb3ed48c723cadefbdebe3926a2127dcbc00ceb84e6e0040f38d [stream]
+[debug] [2024-04-02T06:21:21.767Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/8afe9da5204b601c6f8129d39b3154dc14e085e69ba8093876f55ccc85cb70c1 [none]
+[debug] [2024-04-02T06:21:21.767Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/8afe9da5204b601c6f8129d39b3154dc14e085e69ba8093876f55ccc85cb70c1 [stream]
+[debug] [2024-04-02T06:21:21.767Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/92b3e059acf685cfe704acb591ae7fe6af91884101f23b5e90f840b5148b1ca7 [none]
+[debug] [2024-04-02T06:21:21.767Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/92b3e059acf685cfe704acb591ae7fe6af91884101f23b5e90f840b5148b1ca7 [stream]
+[debug] [2024-04-02T06:21:21.768Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/44b92f02292f17584368043149098f490296ab33a997f3611350f9161bb4df18 [none]
+[debug] [2024-04-02T06:21:21.768Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/44b92f02292f17584368043149098f490296ab33a997f3611350f9161bb4df18 [stream]
+[debug] [2024-04-02T06:21:21.769Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/34fd5b958494c095f071437c3592043a3ed76f560ef172ef4307856f77ad751d [none]
+[debug] [2024-04-02T06:21:21.769Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/34fd5b958494c095f071437c3592043a3ed76f560ef172ef4307856f77ad751d [stream]
+[debug] [2024-04-02T06:21:21.769Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/5a5d0f5e8eebba91e8d97656504d5991e63733295be8e445b4add9cd998051e2 [none]
+[debug] [2024-04-02T06:21:21.769Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/5a5d0f5e8eebba91e8d97656504d5991e63733295be8e445b4add9cd998051e2 [stream]
+[debug] [2024-04-02T06:21:21.770Z] [hosting][populate queue][FINAL] {"max":502,"min":502,"avg":502,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":508}
+[debug] [2024-04-02T06:21:21.770Z] [hosting] uploads queued: 7
+[debug] [2024-04-02T06:21:22.729Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/5a5d0f5e8eebba91e8d97656504d5991e63733295be8e445b4add9cd998051e2 200
+[debug] [2024-04-02T06:21:22.730Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/5a5d0f5e8eebba91e8d97656504d5991e63733295be8e445b4add9cd998051e2 [stream]
+[debug] [2024-04-02T06:21:22.731Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/34fd5b958494c095f071437c3592043a3ed76f560ef172ef4307856f77ad751d 200
+[debug] [2024-04-02T06:21:22.731Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/34fd5b958494c095f071437c3592043a3ed76f560ef172ef4307856f77ad751d [stream]
+[debug] [2024-04-02T06:21:22.731Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/44b92f02292f17584368043149098f490296ab33a997f3611350f9161bb4df18 200
+[debug] [2024-04-02T06:21:22.731Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/44b92f02292f17584368043149098f490296ab33a997f3611350f9161bb4df18 [stream]
+[debug] [2024-04-02T06:21:22.959Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/99ddbeb81289fb3ed48c723cadefbdebe3926a2127dcbc00ceb84e6e0040f38d 200
+[debug] [2024-04-02T06:21:22.960Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/99ddbeb81289fb3ed48c723cadefbdebe3926a2127dcbc00ceb84e6e0040f38d [stream]
+[debug] [2024-04-02T06:21:22.962Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/8afe9da5204b601c6f8129d39b3154dc14e085e69ba8093876f55ccc85cb70c1 200
+[debug] [2024-04-02T06:21:22.962Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/8afe9da5204b601c6f8129d39b3154dc14e085e69ba8093876f55ccc85cb70c1 [stream]
+[debug] [2024-04-02T06:21:23.034Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/92b3e059acf685cfe704acb591ae7fe6af91884101f23b5e90f840b5148b1ca7 200
+[debug] [2024-04-02T06:21:23.035Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/92b3e059acf685cfe704acb591ae7fe6af91884101f23b5e90f840b5148b1ca7 [stream]
+[debug] [2024-04-02T06:21:23.543Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/b303118ab29573802e50fe99327d21c81ec35ed35cc4a303ed2db3714d99a1d9 200
+[debug] [2024-04-02T06:21:23.543Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/wuhealth-f19ba/versions/3011248598aea836/files/b303118ab29573802e50fe99327d21c81ec35ed35cc4a303ed2db3714d99a1d9 [stream]
+[debug] [2024-04-02T06:21:23.543Z] [hosting][upload queue][FINAL] {"max":1780,"min":966,"avg":1192.4285714285713,"active":0,"complete":7,"success":7,"errored":0,"retried":0,"total":7,"elapsed":1780}
+[info] ✔  hosting[wuhealth-f19ba]: file upload complete 
+[debug] [2024-04-02T06:21:23.544Z] [hosting] deploy completed after 2537ms
+[debug] [2024-04-02T06:21:23.545Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/wuhealth-f19ba/billingInfo [none]
+[debug] [2024-04-02T06:21:23.861Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/wuhealth-f19ba/billingInfo 200
+[debug] [2024-04-02T06:21:23.862Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/wuhealth-f19ba/billingInfo {"name":"projects/wuhealth-f19ba/billingInfo","projectId":"wuhealth-f19ba","billingAccountName":"billingAccounts/01615C-85E803-5835C4","billingEnabled":true}
+[info] i  database: releasing rules... 
+[debug] [2024-04-02T06:21:23.863Z] >>> [apiv2][query] GET https://firebasedatabase.googleapis.com/v1beta/projects/wuhealth-f19ba/locations/-/instances/wuhealth-f19ba-default-rtdb [none]
+[debug] [2024-04-02T06:21:24.172Z] <<< [apiv2][status] GET https://firebasedatabase.googleapis.com/v1beta/projects/wuhealth-f19ba/locations/-/instances/wuhealth-f19ba-default-rtdb 200
+[debug] [2024-04-02T06:21:24.173Z] <<< [apiv2][body] GET https://firebasedatabase.googleapis.com/v1beta/projects/wuhealth-f19ba/locations/-/instances/wuhealth-f19ba-default-rtdb {"name":"projects/238930998501/locations/us-central1/instances/wuhealth-f19ba-default-rtdb","project":"projects/238930998501","databaseUrl":"https://wuhealth-f19ba-default-rtdb.firebaseio.com","type":"DEFAULT_DATABASE","state":"ACTIVE"}
+[debug] [2024-04-02T06:21:24.174Z] >>> [apiv2][query] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json 
+[debug] [2024-04-02T06:21:24.174Z] >>> [apiv2][body] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json "{\n  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */\n  \"rules\": {\n    \".read\": false,\n    \".write\": false\n  }\n}"
+[debug] [2024-04-02T06:21:24.452Z] <<< [apiv2][status] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json 200
+[debug] [2024-04-02T06:21:24.452Z] <<< [apiv2][body] PUT https://wuhealth-f19ba-default-rtdb.firebaseio.com/.settings/rules.json {"status":"ok"}
+[info] ✔  database: rules for database wuhealth-f19ba-default-rtdb released successfully 
+[debug] [2024-04-02T06:21:24.453Z] [rules] releasing firebase.storage/wuhealth-f19ba.appspot.com with ruleset projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335
+[debug] [2024-04-02T06:21:24.453Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com [none]
+[debug] [2024-04-02T06:21:24.453Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com {"release":{"name":"projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com","rulesetName":"projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335"}}
+[debug] [2024-04-02T06:21:24.832Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com 200
+[debug] [2024-04-02T06:21:24.832Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com {"name":"projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com","rulesetName":"projects/wuhealth-f19ba/rulesets/1a3c8eec-1c0d-486c-be04-b4d114a85335","createTime":"2024-04-02T03:56:20.976953Z","updateTime":"2024-04-02T06:21:24.842167Z"}
+[debug] [2024-04-02T06:21:24.832Z] [rules] updated release projects/wuhealth-f19ba/releases/firebase.storage/wuhealth-f19ba.appspot.com
+[info] ✔  storage: released rules storage.rules to firebase.storage 
+[debug] [2024-04-02T06:21:24.833Z] [rules] releasing cloud.firestore/(default) with ruleset projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702
+[debug] [2024-04-02T06:21:24.834Z] >>> [apiv2][query] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/cloud.firestore/(default) [none]
+[debug] [2024-04-02T06:21:24.834Z] >>> [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/cloud.firestore/(default) {"release":{"name":"projects/wuhealth-f19ba/releases/cloud.firestore/(default)","rulesetName":"projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702"}}
+[debug] [2024-04-02T06:21:25.291Z] <<< [apiv2][status] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/cloud.firestore/(default) 200
+[debug] [2024-04-02T06:21:25.292Z] <<< [apiv2][body] PATCH https://firebaserules.googleapis.com/v1/projects/wuhealth-f19ba/releases/cloud.firestore/(default) {"name":"projects/wuhealth-f19ba/releases/cloud.firestore","rulesetName":"projects/wuhealth-f19ba/rulesets/8ca1c6b2-41b0-42ca-b862-cb285c125702","createTime":"2024-03-27T23:28:35.245357Z","updateTime":"2024-04-02T06:21:25.196585Z"}
+[debug] [2024-04-02T06:21:25.292Z] [rules] updated release projects/wuhealth-f19ba/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[debug] [2024-04-02T06:21:25.297Z] Total Function Deployment time: 0
+[debug] [2024-04-02T06:21:25.298Z] 0 Functions Deployed
+[debug] [2024-04-02T06:21:25.298Z] 0 Functions Errored
+[debug] [2024-04-02T06:21:25.298Z] 0 Function Deployments Aborted
+[debug] [2024-04-02T06:21:25.298Z] Average Function Deployment time: NaN
+[info] i  functions: cleaning up build files... 
+[debug] [2024-04-02T06:21:25.395Z] [
+  {
+    "config": {
+      "public": "frontend/build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "wuhealth-f19ba"
+    },
+    "version": "projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836"
+  }
+]
+[info] i  hosting[wuhealth-f19ba]: finalizing version... 
+[debug] [2024-04-02T06:21:25.397Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions/3011248598aea836 updateMask=status%2Cconfig
+[debug] [2024-04-02T06:21:25.397Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions/3011248598aea836 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2024-04-02T06:21:25.829Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions/3011248598aea836 200
+[debug] [2024-04-02T06:21:25.829Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/versions/3011248598aea836 {"name":"projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2024-04-02T06:21:13.673173Z","createUser":{"email":"qianyi.huang@vanderbilt.edu"},"finalizeTime":"2024-04-02T06:21:25.834381Z","finalizeUser":{"email":"qianyi.huang@vanderbilt.edu"}}
+[debug] [2024-04-02T06:21:25.829Z] [hosting] finalized version for wuhealth-f19ba:[object Object]
+[info] ✔  hosting[wuhealth-f19ba]: version finalized 
+[info] i  hosting[wuhealth-f19ba]: releasing new version... 
+[debug] [2024-04-02T06:21:25.830Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/channels/live/releases versionName=projects%2F238930998501%2Fsites%2Fwuhealth-f19ba%2Fversions%2F3011248598aea836
+[debug] [2024-04-02T06:21:25.830Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/channels/live/releases {}
+[debug] [2024-04-02T06:21:26.317Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/channels/live/releases 200
+[debug] [2024-04-02T06:21:26.318Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/wuhealth-f19ba/channels/live/releases {"name":"projects/238930998501/sites/wuhealth-f19ba/channels/live/releases/1712038885677000","version":{"name":"projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2024-04-02T06:21:13.673173Z","createUser":{"email":"qianyi.huang@vanderbilt.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocK-4k-0DLxFTRzWhnZCOF3obM_zUkhh45BTKYeWZxQT=mo"},"finalizeTime":"2024-04-02T06:21:25.834381Z","finalizeUser":{"email":"qianyi.huang@vanderbilt.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocK-4k-0DLxFTRzWhnZCOF3obM_zUkhh45BTKYeWZxQT=mo"}},"type":"DEPLOY","releaseTime":"2024-04-02T06:21:25.677Z","releaseUser":{"email":"qianyi.huang@vanderbilt.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocK-4k-0DLxFTRzWhnZCOF3obM_zUkhh45BTKYeWZxQT=mo"}}
+[debug] [2024-04-02T06:21:26.318Z] [hosting] release: {"name":"projects/238930998501/sites/wuhealth-f19ba/channels/live/releases/1712038885677000","version":{"name":"projects/238930998501/sites/wuhealth-f19ba/versions/3011248598aea836","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2024-04-02T06:21:13.673173Z","createUser":{"email":"qianyi.huang@vanderbilt.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocK-4k-0DLxFTRzWhnZCOF3obM_zUkhh45BTKYeWZxQT=mo"},"finalizeTime":"2024-04-02T06:21:25.834381Z","finalizeUser":{"email":"qianyi.huang@vanderbilt.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocK-4k-0DLxFTRzWhnZCOF3obM_zUkhh45BTKYeWZxQT=mo"}},"type":"DEPLOY","releaseTime":"2024-04-02T06:21:25.677Z","releaseUser":{"email":"qianyi.huang@vanderbilt.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocK-4k-0DLxFTRzWhnZCOF3obM_zUkhh45BTKYeWZxQT=mo"}}
+[info] ✔  hosting[wuhealth-f19ba]: release complete 
+[debug] [2024-04-02T06:21:26.319Z] >>> [apiv2][query] GET https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig 
+[debug] [2024-04-02T06:21:26.958Z] <<< [apiv2][status] GET https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig 200
+[debug] [2024-04-02T06:21:26.958Z] <<< [apiv2][body] GET https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig {"version":{"versionNumber":"7","updateTime":"2024-04-02T05:58:11.500691Z","updateUser":{"email":"qianyi.huang@vanderbilt.edu"},"updateOrigin":"REST_API","updateType":"INCREMENTAL_UPDATE"}}
+[debug] [2024-04-02T06:21:26.959Z] >>> [apiv2][query] PUT https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig [none]
+[debug] [2024-04-02T06:21:26.959Z] >>> [apiv2][body] PUT https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig {}
+[debug] [2024-04-02T06:21:27.545Z] <<< [apiv2][status] PUT https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig 200
+[debug] [2024-04-02T06:21:27.545Z] <<< [apiv2][body] PUT https://firebaseremoteconfig.googleapis.com/v1/projects/238930998501/remoteConfig {"version":{"versionNumber":"8","updateTime":"2024-04-02T06:21:27.263790Z","updateUser":{"email":"qianyi.huang@vanderbilt.edu"},"updateOrigin":"REST_API","updateType":"INCREMENTAL_UPDATE"}}
+[debug] [2024-04-02T06:21:27.623Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/wuhealth-f19ba/instances pageSize=100&pageToken=
+[debug] [2024-04-02T06:21:27.913Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/wuhealth-f19ba/instances 200
+[debug] [2024-04-02T06:21:27.914Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/wuhealth-f19ba/instances {}
+[debug] [2024-04-02T06:21:28.002Z] Error: EACCES: permission denied, open '/Users/nataliehuang/Desktop/OnlineOrderWeb/.firebaserc'
+    at Object.openSync (node:fs:603:3)
+    at Object.writeFileSync (node:fs:2324:35)
+    at RC.save (/usr/local/lib/node_modules/firebase-tools/lib/rc.js:157:16)
+    at RC.setEtags (/usr/local/lib/node_modules/firebase-tools/lib/rc.js:153:14)
+    at saveEtags (/usr/local/lib/node_modules/firebase-tools/lib/extensions/etags.js:5:8)
+    at release (/usr/local/lib/node_modules/firebase-tools/lib/deploy/extensions/release.js:51:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async chain (/usr/local/lib/node_modules/firebase-tools/lib/deploy/index.js:38:9)
+    at async deploy (/usr/local/lib/node_modules/firebase-tools/lib/deploy/index.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.
