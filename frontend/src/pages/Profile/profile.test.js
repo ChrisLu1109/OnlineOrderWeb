@@ -47,12 +47,21 @@
 //     });
 // });
 
+<<<<<<< HEAD
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Profile from './profile'; // Adjust the import path according to your project structure
+import { BrowserRouter } from 'react-router-dom';
+import * as firebaseAuth from '../../services/firebase-config'; // assuming auth is exported from here
+=======
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Profile from "../Profile"; // Adjust the import path according to your project structure
 import { BrowserRouter } from "react-router-dom";
 import * as firebaseAuth from "../../services/firebase-config"; // assuming auth is exported from here
+>>>>>>> 4dcf18258694e05d9bfd2a3c55251d12ddeddd4a
 
 // Mocking Firebase auth module with signOut as a jest function
 jest.mock("../../services/firebase-config", () => ({

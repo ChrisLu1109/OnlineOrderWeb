@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1712031330882" clover="3.2.0">
   <project timestamp="1712031330882" name="All files">
     <metrics statements="51" coveredstatements="45" conditionals="29" coveredconditionals="21" methods="24" coveredmethods="19" elements="104" coveredelements="85" complexity="0" loc="51" ncloc="51" packages="5" files="5" classes="5"/>
     <package name="components.Header">
       <metrics statements="15" coveredstatements="14" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
       <file name="Header.js" path="/Users/chrislu/Desktop/OnlineOrderWeb/frontend/src/components/Header/Header.js">
+=======
+<coverage generated="1712028876919" clover="3.2.0">
+  <project timestamp="1712028876919" name="All files">
+    <metrics statements="68" coveredstatements="53" conditionals="28" coveredconditionals="18" methods="33" coveredmethods="21" elements="129" coveredelements="92" complexity="0" loc="68" ncloc="68" packages="6" files="6" classes="6"/>
+    <package name="components.Header">
+      <metrics statements="15" coveredstatements="14" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
+      <file name="Header.js" path="D:\OnlineOrderWeb\frontend\src\components\Header\Header.js">
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
         <metrics statements="15" coveredstatements="14" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
         <line num="11" count="5" type="stmt"/>
         <line num="12" count="5" type="stmt"/>
@@ -25,7 +34,11 @@
     </package>
     <package name="components.Search">
       <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+<<<<<<< HEAD
       <file name="Search.js" path="/Users/chrislu/Desktop/OnlineOrderWeb/frontend/src/components/Search/Search.js">
+=======
+      <file name="Search.js" path="D:\OnlineOrderWeb\frontend\src\components\Search\Search.js">
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
         <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="6" count="26" type="stmt"/>
         <line num="7" count="25" type="stmt"/>
@@ -39,25 +52,66 @@
       </file>
     </package>
     <package name="components.Tags">
+<<<<<<< HEAD
       <metrics statements="2" coveredstatements="2" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
       <file name="Tags.js" path="/Users/chrislu/Desktop/OnlineOrderWeb/frontend/src/components/Tags/Tags.js">
         <metrics statements="2" coveredstatements="2" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="6" count="3" type="stmt"/>
         <line num="12" count="15" type="stmt"/>
+=======
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="Tags.js" path="D:\OnlineOrderWeb\frontend\src\components\Tags\Tags.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="10" count="15" type="stmt"/>
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
       </file>
     </package>
     <package name="components.Thumbnails">
       <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+<<<<<<< HEAD
       <file name="Thumbnails.js" path="/Users/chrislu/Desktop/OnlineOrderWeb/frontend/src/components/Thumbnails/Thumbnails.js">
+=======
+      <file name="Thumbnails.js" path="D:\OnlineOrderWeb\frontend\src\components\Thumbnails\Thumbnails.js">
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <line num="6" count="3" type="stmt"/>
         <line num="9" count="6" type="stmt"/>
         <line num="25" count="6" type="stmt"/>
       </file>
     </package>
+<<<<<<< HEAD
     <package name="pages.restrictions">
       <metrics statements="22" coveredstatements="17" conditionals="10" coveredconditionals="4" methods="10" coveredmethods="5"/>
       <file name="restrictions.js" path="/Users/chrislu/Desktop/OnlineOrderWeb/frontend/src/pages/restrictions/restrictions.js">
+=======
+    <package name="pages.Profile">
+      <metrics statements="17" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="2"/>
+      <file name="profile.js" path="D:\OnlineOrderWeb\frontend\src\pages\Profile\profile.js">
+        <metrics statements="17" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="8" coveredmethods="2"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.restrictions">
+      <metrics statements="22" coveredstatements="17" conditionals="10" coveredconditionals="4" methods="10" coveredmethods="5"/>
+      <file name="restrictions.js" path="D:\OnlineOrderWeb\frontend\src\pages\restrictions\restrictions.js">
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
         <metrics statements="22" coveredstatements="17" conditionals="10" coveredconditionals="4" methods="10" coveredmethods="5"/>
         <line num="5" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
@@ -79,8 +133,13 @@
         <line num="37" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="38" count="3" type="stmt"/>
         <line num="42" count="5" type="stmt"/>
+<<<<<<< HEAD
         <line num="95" count="30" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
+=======
+        <line num="94" count="25" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
       </file>
     </package>
   </project>
