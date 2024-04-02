@@ -76,7 +76,6 @@
 // //   );
 // // }
 
-
 // import React, { useEffect, useReducer } from 'react';
 // import { useLocation } from 'react-router-dom'; // Used to get the current URL query params
 // import { parse } from 'query-string'; // Parse query params from the URL
@@ -84,7 +83,7 @@
 // import {
 //   getAll,
 //   // Replace 'searchByRestrictions' with the actual function name from your services
-//   searchByRestrictions, 
+//   searchByRestrictions,
 // } from '../../services/foodService';
 // import Thumbnails from '../../components/Thumbnails/Thumbnails';
 // import SearchBar from '../../components/Search/SearchBar'; // Assuming this is the right path
@@ -136,26 +135,26 @@
 //     </>
 //   );
 // }
-import React, { useEffect, useReducer } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useReducer } from "react";
+import { useLocation } from "react-router-dom";
 import {
   getFoodsByDietaryRestrictions,
   getAllTags,
-} from '../../services/foodService';
-import Thumbnails from '../../components/Thumbnails/Thumbnails';
-import SearchBar from '../../components/Search/Search'; // Adjust if necessary
-import Tags from '../../components/Tags/Tags';
+} from "../../services/foodService";
+import Thumbnails from "../../components/Thumbnails/Thumbnails";
+import SearchBar from "../../components/Search/Search"; // Adjust if necessary
+import Tags from "../../components/Tags/Tags";
 
 // Assuming db setup is correctly imported for your Firestore queries
-import { db } from '../../services/firebase-config';
+import { db } from "../../services/firebase-config";
 
 const initialState = { foods: [], tags: [] };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'FOODS_LOADED':
+    case "FOODS_LOADED":
       return { ...state, foods: action.payload };
-    case 'TAGS_LOADED':
+    case "TAGS_LOADED":
       return { ...state, tags: action.payload };
     default:
       return state;
@@ -169,18 +168,22 @@ function HomePage() {
 
   useEffect(() => {
     // Fetch all unique tags for filtering options
-    getAllTags().then((tagsData) =>
-      dispatch({ type: 'TAGS_LOADED', payload: tagsData })
-    );
+    getAllTags().then((tagsData) => {
+      // Map the array of strings to an array of objects with a 'name' property
+      const tagsWithNames = tagsData.map((tagName) => ({
+        name: tagName,
+        // count: You would need to determine the count here, if necessary
+      }));
+      dispatch({ type: "TAGS_LOADED", payload: tagsWithNames });
+    });
 
     // Fetch foods based on selected dietary restrictions
     // Assuming `location.state.selectedRestrictions` holds our array of restrictions
     const restrictions = location.state?.selectedRestrictions || [];
-
     getFoodsByDietaryRestrictions(restrictions).then((foodsData) => {
-      dispatch({ type: 'FOODS_LOADED', payload: foodsData });
+      dispatch({ type: "FOODS_LOADED", payload: foodsData });
     });
-  }, [location.state]); // Reacting to changes in location.state to refetch data
+  }, [location.state]);
 
   return (
     <>

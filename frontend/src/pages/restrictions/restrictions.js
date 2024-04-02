@@ -90,16 +90,13 @@ function SearchBar({ onSearch }) {
           maxWidth: "1024px",
         }}
       >
-        {["None", "Lacto-vegetarian", "Ovo-vegetarian",
-          "Lacto-ovo vegetarian", "Vegan", "Pescatarian", "Keto",
-          "Gluten-Free", "Dairy-Free", "Halal", "Kosher",
-          "Nut-Free", "Low Sodium", "Low Sugar", "Low Calories"].map((restriction) => (
+        {["Peanuts", "Dairy", "Meat", "Eggs", "Alcohol"].map((restriction) => (
           <button
             key={restriction}
             onClick={() => handleButtonClick(restriction)}
             style={{
-              width: "180px", 
-              height: "50px", 
+              width: "180px",
+              height: "50px",
               padding: "10px",
               margin: "5px",
               backgroundColor: selectedRestrictions.includes(restriction)

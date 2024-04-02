@@ -8,6 +8,7 @@ export default function Search() {
   const { searchTerm } = useParams();
 
   const search = async () => {
+    console.log("Search term:", term); // This should log the term when search is triggered
     term ? navigate("/search/" + term) : navigate("/");
   };
 

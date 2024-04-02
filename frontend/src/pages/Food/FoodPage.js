@@ -1,49 +1,68 @@
 import React from "react";
-import classes from "./foodPage.module.css"
+import classes from "./foodPage.module.css";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom/dist";
 import { useEffect } from "react";
 import { getById } from "../../services/foodService";
 import Tags from "../../components/Tags/Tags";
-import { useCart } from '../../hooks/useCart';
+import { useCart } from "../../hooks/useCart";
 
-export default function FoodPage(){
-    const [food, setfood] = useState({});
-    const {id} = useParams();
-    const { addToCart } = useCart();
-    const navigate = useNavigate();
+export default function FoodPage() {
+  const [food, setfood] = useState({});
+  const { id } = useParams();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
 
-    const handleAddToCart = () => {
-      addToCart(food);
-      navigate('/cart');
-    }
+  const handleAddToCart = () => {
+    addToCart(food);
+    navigate("/cart");
+  };
 
-    useEffect(() => {
-        getById(id).then((fetchedFood) => {
-            setfood(fetchedFood);
-            console.log(fetchedFood); // This will log the food object to verify the imageUrl
-        });
-    }, [id]);
-    return( 
+  // debug use only
+  useEffect(() => {
+    getById(id)
+      .then((fetchedFood) => {
+        if (fetchedFood) {
+          setfood(fetchedFood);
+        } else {
+          // handle the case when the food item does not exist
+          console.log("Food item not found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching food item:", error);
+      });
+  }, [id]);
+
+  useEffect(() => {
+    getById(id).then((fetchedFood) => {
+      setfood(fetchedFood);
+      console.log(fetchedFood); // This will log the food object to verify the imageUrl
+    });
+  }, [id]);
+
+  return (
     <>
-    {food && (
-    <div className= {classes.container}>
-        <img 
-            className= {classes.image}
+      {food && (
+        <div className={classes.container}>
+          <img
+            className={classes.image}
             src={`/foods/${food.imageURL}`}
-            alt = {food.name}
-        />
+            alt={food.name}
+          />
 
-        <div className= {classes.details}>
+          <div className={classes.details}>
             <div className={classes.header}>
-                <span className={classes.name}>{food.name}</span>
-                <span className={`${classes.favorite} ${food.favorite? '':classes.not}`}>
-                
-                </span>
+              <span className={classes.name}>{food.name}</span>
+              <span
+                className={`${classes.favorite} ${
+                  food.favorite ? "" : classes.not
+                }`}
+              ></span>
             </div>
-            
+
             <div className={classes.origins}>
-              {food.origins?.map(origin => (
+              {food.origins?.map((origin) => (
                 <span key={origin}>{origin}</span>
               ))}
             </div>
@@ -51,7 +70,7 @@ export default function FoodPage(){
             <div className={classes.tags}>
               {food.tags && (
                 <Tags
-                  tags={food.tags.map(tag => ({ name: tag }))}
+                  tags={food.tags.map((tag) => ({ name: tag }))}
                   forFoodPage={true}
                 />
               )}
@@ -63,14 +82,10 @@ export default function FoodPage(){
               </span>
             </div>
 
-
             <button onClick={handleAddToCart}>Add To Cart</button>
-
-
-
+          </div>
         </div>
-
-    </div>
-    )}</>
-    )
+      )}
+    </>
+  );
 }
