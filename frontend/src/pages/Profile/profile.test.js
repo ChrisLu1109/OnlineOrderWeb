@@ -51,7 +51,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Profile from './Profile'; // Adjust the import path according to your project structure
+import Profile from './profile'; // Adjust the import path according to your project structure
 import { BrowserRouter } from 'react-router-dom';
 import * as firebaseAuth from '../../services/firebase-config'; // assuming auth is exported from here
 

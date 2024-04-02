@@ -2,17 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./Tags.module.css";
 
-export default function Tags({ tags, forFoodPage }) {
+export default function Tags({ tags, onTagClick }) {
   return (
-    <div
-      className={classes.container}
-      style={{ justifyContent: forFoodPage ? "start" : "center" }}
-    >
+    <div className={classes.container}>
       {tags.map((tag) => (
-        <Link key={tag.name} to={`/tag/${tag.name}`}>
+        // Change this from <Link> to <button> or <div> with an onClick event
+        <button key={tag.name} onClick={() => onTagClick(tag.name)} className={classes.tagButton}>
           {tag.name}
-          {!forFoodPage && tag.count !== undefined && `(${tag.count})`}
-        </Link>
+        </button>
       ))}
     </div>
   );
