@@ -168,6 +168,7 @@ function HomePage() {
   const { foods, tags } = state;
   const location = useLocation();
   const { searchTerm } = useParams();
+
   useEffect(() => {
     // Always fetch and load tags
     getAllTags().then((tagsData) => {
