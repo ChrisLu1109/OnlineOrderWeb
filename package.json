@@ -3,8 +3,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://ChrisLu1109.github.io/ChrisLu1109/OnlineOrderWeb",
   "devDependencies": {
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
@@ -20,5 +23,8 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.1.2"
+  },
+  "dependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
