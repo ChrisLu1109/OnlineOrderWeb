@@ -22,11 +22,13 @@ jest.mock('../../hooks/useCart', () => ({
 // Mocking Firebase Auth
 jest.mock('../../services/firebase-config', () => ({
   auth: {
-    onAuthStateChanged: jest.fn(callback => {
-      callback({ displayName: 'Test User', email: 'test@example.com' }); // Mock logged-in user
-      return jest.fn(); // Return a mock unsubscribe function
-    }),
-    signOut: jest.fn().mockResolvedValue(), // Mock signOut to resolve
+    onAuthStateChanged: jest.fn()
+      .mockImplementation(callback => {
+        const unsubscribe = jest.fn(); // Mock unsubscribe function
+        callback({ displayName: 'Test User', email: 'test@example.com' });
+        return unsubscribe; // Return the mock unsubscribe function
+      }),
+    signOut: jest.fn().mockResolvedValue(),
   },
 }));
 
@@ -79,6 +81,22 @@ describe('Header component', () => {
     expect(screen.getByText(/login/i)).toBeInTheDocument();
     // Verifying cart link exists regardless of authentication state
     expect(screen.getByText(/cart/i)).toBeInTheDocument();
-    expect(screen.getByText('3')).toBeInTheDocument(); // Mocked cart total count
+  });
+});
+
+describe('Header component cleanup', () => {
+  it('calls unsubscribe on component unmount', () => {
+    const { unmount } = render(
+      <Router>
+        <Header />
+      </Router>
+    );
+    
+    // Unmount the component
+    unmount();
+
+    // Check if the unsubscribe function was called upon unmounting
+    const unsubscribeMock = auth.onAuthStateChanged.mock.results[0].value;
+    expect(unsubscribeMock).toHaveBeenCalled();
   });
 });

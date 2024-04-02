@@ -1,5 +1,4 @@
 import React from 'react';
-import './switchBar.css'; // Make sure the path to your CSS file is correct
 
 const SwitchBar = ({ onLogin, onSignUp }) => {
   const [active, setActive] = React.useState('login'); // 'login' or 'signup'
