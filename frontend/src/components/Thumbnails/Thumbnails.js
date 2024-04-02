@@ -1,13 +1,12 @@
 import React from "react";
 import classes from "./Thumbnails.module.css";
 import { Link } from "react-router-dom";
-
 export default function Thumbnails({ foods }) {
   return (
     <ul className={classes.list}>
       {foods.map((food) => (
-        <li key={food.id}>
-          <Link to={`/food/${food.id}`}>
+        <li key={food.id} className={classes.item}>
+          <Link to={`/food/${food.id}`} className={classes.link}>
             <img
               className={classes.image}
               src={`/foods/${food.imageURL}`}
@@ -15,20 +14,13 @@ export default function Thumbnails({ foods }) {
             />
             <div className={classes.content}>
               <div className={classes.name}>{food.name}</div>
-              <div className={classes.name}>{food.calories}</div>
-              <span className={food.favorite ? classes.favorite : classes.not}>
-                ♥
-              </span>
-              <div className={classes.product_item_footer}>
-                <div className={classes.allergy}>
-                  {food.allergy.map((allergy) => (
-                    <span key={allergy}>{allergy}</span>
-                  ))}
-                </div>
-                <div className={classes.cook_time}>
-                  <span>Cook Time: </span>
-                  {food.cookTime}
-                </div>
+              <div className={classes.calories}>{food.calories} calories</div>
+              {food.favorite && <span className={classes.favorite}>♥</span>}
+              <div className={classes.tags}>
+                {food.tags.map((tag) => (
+                  <span key={tag} className={classes.tagButton}>{tag}</span>
+                ))}
+                <span className={classes.cookTime}>Cook Time: {food.cookTime} Mins</span>
               </div>
             </div>
           </Link>

@@ -111,11 +111,12 @@ function HomePage() {
   const { searchTerm } = useParams();
 
   const handleTagClick = async (tagName) => {
-    // Adjusted to include restrictions along with the tag
+    // Include restrictions in the filterFoods function call
     const restrictions = location.state?.selectedRestrictions || [];
     const foodsFiltered = await filterFoods(restrictions, tagName);
     dispatch({ type: "FOODS_LOADED", payload: foodsFiltered });
   };
+
 
   useEffect(() => {
     // Always fetch and load tags

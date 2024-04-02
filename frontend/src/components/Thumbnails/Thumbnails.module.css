@@ -46,13 +46,24 @@
     color: grey;
 }
 
-.product_item_footer{
-    display:flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.productItemFooter{
+    display: flex; /* Changed to a flex row */
+    justify-content: space-between; /* This will push the cookTime to the right */
+    align-items: center; /* This will vertically align the tags and cookTime */
 }
 
-.allergy span{
+.tags {
+    display: flex; /* align tags in a row */
+    flex-wrap: wrap; /* Allows tags to wrap to next line if they don't fit */
+    align-items: center; /* Vertically aligns tags */
+    gap: 5px; /* Adjust space between tags */
+}
+
+.cookTime {
+    margin-left: auto; /* Pushes the cookTime to the right */
+    white-space: nowrap; /* Prevents cookTime from wrapping */
+}
+.tagButton {
     border-radius: 2rem;
     background-color: whitesmoke;
     display: inline-block;
@@ -61,5 +72,6 @@
     margin-right: 0.3rem;
     padding: 0 0.5rem;
     margin-top: 0.2rem;
-}
+  }
+
 
