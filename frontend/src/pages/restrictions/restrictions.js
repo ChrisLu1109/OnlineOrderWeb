@@ -1,43 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function SearchBar({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState("");
+function DietaryRestrictionsPage() {
   const [selectedRestrictions, setSelectedRestrictions] = useState([]);
   const navigate = useNavigate();
 
-  // Handles changes to the search input field
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-    if (onSearch) {
-      onSearch(event.target.value);
-    }
-  };
-
-  // Handles click events for each restriction button
+  // Handles click events for each dietary restriction button
   const handleButtonClick = (restriction) => {
-    if (selectedRestrictions.includes(restriction)) {
-      setSelectedRestrictions((current) =>
-        current.filter((r) => r !== restriction)
-      );
-    } else {
-      setSelectedRestrictions((current) => [...current, restriction]);
-    }
+    setSelectedRestrictions((current) =>
+      current.includes(restriction)
+        ? current.filter((r) => r !== restriction)
+        : [...current, restriction]
+    );
   };
 
-  // Navigates back to the homepage and potentially could pass the selected restrictions
+  // Navigates back to the homepage and passes the selected restrictions
   const handleConfirmClick = () => {
-    navigate("/", { state: { selectedRestrictions } }); // Passing state through navigation
+    navigate("/", { state: { selectedRestrictions } });
   };
-
-  // Updates searchTerm when selectedRestrictions change
-  useEffect(() => {
-    const combinedTerm = selectedRestrictions.join(" + ");
-    setSearchTerm(combinedTerm);
-    if (onSearch) {
-      onSearch(combinedTerm);
-    }
-  }, [selectedRestrictions, onSearch]);
 
   return (
     <div
@@ -50,38 +30,7 @@ function SearchBar({ onSearch }) {
         marginTop: "-100px",
       }}
     >
-      <input
-        type="text"
-        placeholder="Dietary Restrictions"
-        value={searchTerm}
-        onChange={handleChange}
-        style={{
-          width: "60%",
-          padding: "20px",
-          fontSize: "1.5rem",
-          borderRadius: "25px",
-          border: "1px solid #ccc",
-          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          marginBottom: "20px",
-        }}
-      />
-
-      <button
-        onClick={handleConfirmClick}
-        style={{
-          padding: "10px 20px",
-          margin: "10px 0",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "50px",
-          cursor: "pointer",
-          fontSize: "1rem",
-          boxShadow: "0 3px 6px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        Confirm
-      </button>
+      <h2>Select Dietary Restrictions</h2>
       <div
         style={{
           display: "flex",
@@ -90,7 +39,10 @@ function SearchBar({ onSearch }) {
           maxWidth: "1024px",
         }}
       >
-        {["Peanuts", "Dairy", "Meat", "Eggs", "Alcohol", "Fried"].map(
+        {["None", "Lacto-vegetarian", "Ovo-vegetarian",
+          "Lacto-ovo vegetarian", "Vegan", "Pescatarian", "Keto",
+          "Gluten-Free", "Dairy-Free", "Halal", "Kosher",
+          "Nut-Free", "Low Sodium", "Low Sugar", "Low Calories"].map(
           (restriction) => (
             <button
               key={restriction}
@@ -123,8 +75,24 @@ function SearchBar({ onSearch }) {
           )
         )}
       </div>
+      <button
+        onClick={handleConfirmClick}
+        style={{
+          padding: "10px 20px",
+          margin: "10px 0",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "50px",
+          cursor: "pointer",
+          fontSize: "1rem",
+          boxShadow: "0 3px 6px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        Confirm Selection
+      </button>
     </div>
   );
 }
 
-export default SearchBar;
+export default DietaryRestrictionsPage;
