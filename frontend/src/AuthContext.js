@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./services/firebase-config";
-=======
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './services/firebase-config'; // Adjust the path according to your project structure
->>>>>>> e05b5304 (Auth)
 
 const AuthContext = createContext();
 

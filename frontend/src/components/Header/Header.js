@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../hooks/useCart";
 import { auth } from "../../services/firebase-config";
 
+
 export default function Header() {
   // const user = {
   //   name: "Chris",
@@ -76,7 +77,7 @@ export default function Header() {
                   )}
                 </Link>
               ) : (
-                <Link to="/login">
+                <Link to="/cart">
                   Cart <span className={classes.cart_count}>0</span>
                 </Link>
               )}
