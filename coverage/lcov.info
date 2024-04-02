@@ -1,5 +1,9 @@
 TN:
+<<<<<<< HEAD
+SF:frontend/src/components/Header/Header.js
+=======
 SF:frontend\src\components\Header\Header.js
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
 FN:7,Header
 FN:15,(anonymous_1)
 FN:16,(anonymous_2)
@@ -41,7 +45,11 @@ BRF:8
 BRH:6
 end_of_record
 TN:
+<<<<<<< HEAD
+SF:frontend/src/components/Search/Search.js
+=======
 SF:frontend\src\components\Search\Search.js
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
 FN:5,Search
 FN:10,(anonymous_1)
 FN:20,(anonymous_2)
@@ -71,6 +79,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
+<<<<<<< HEAD
 SF:frontend\src\components\SwitchBar\switchBar.js
 FN:3,(anonymous_0)
 FN:10,(anonymous_1)
@@ -97,6 +106,31 @@ BRF:4
 BRH:4
 end_of_record
 TN:
+=======
+<<<<<<< HEAD
+SF:frontend/src/components/Tags/Tags.js
+FN:5,Tags
+FN:11,(anonymous_1)
+FNF:2
+FNH:2
+FNDA:3,Tags
+FNDA:15,(anonymous_1)
+DA:6,3
+DA:12,15
+LF:2
+LH:2
+BRDA:9,0,0,1
+BRDA:9,0,1,2
+BRDA:14,1,0,15
+BRDA:14,1,1,10
+BRDA:14,1,2,10
+BRF:5
+BRH:5
+end_of_record
+TN:
+SF:frontend/src/components/Thumbnails/Thumbnails.js
+=======
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 SF:frontend\src\components\Tags\Tags.js
 FN:5,Tags
 FN:8,(anonymous_1)
@@ -115,6 +149,7 @@ BRH:0
 end_of_record
 TN:
 SF:frontend\src\components\Thumbnails\Thumbnails.js
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
 FN:5,Thumbnails
 FN:8,(anonymous_1)
 FN:24,(anonymous_2)
@@ -134,7 +169,60 @@ BRF:2
 BRH:2
 end_of_record
 TN:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+SF:frontend/src/pages/restrictions/restrictions.js
+=======
+SF:frontend\src\pages\Profile\profile.js
+FN:7,Profile
+FN:11,(anonymous_1)
+FN:16,(anonymous_2)
+FN:22,(anonymous_3)
+FN:29,(anonymous_4)
+FN:32,(anonymous_5)
+FN:39,(anonymous_6)
+FN:64,(anonymous_7)
+FNF:8
+FNH:2
+FNDA:1,Profile
+FNDA:1,(anonymous_1)
+FNDA:0,(anonymous_2)
+FNDA:0,(anonymous_3)
+FNDA:0,(anonymous_4)
+FNDA:0,(anonymous_5)
+FNDA:0,(anonymous_6)
+FNDA:0,(anonymous_7)
+DA:8,1
+DA:9,1
+DA:11,1
+DA:12,1
+DA:13,1
+DA:16,1
+DA:17,0
+DA:19,0
+DA:24,0
+DA:25,0
+DA:30,0
+DA:33,0
+DA:34,0
+DA:39,1
+DA:40,0
+DA:43,1
+DA:64,0
+LF:17
+LH:8
+BRDA:9,0,0,1
+BRDA:9,0,1,1
+BRDA:17,1,0,0
+BRDA:17,1,1,0
+BRF:4
+BRH:2
+end_of_record
+TN:
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 SF:frontend\src\pages\restrictions\restrictions.js
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
 FN:4,SearchBar
 FN:10,(anonymous_1)
 FN:18,(anonymous_2)
@@ -143,8 +231,18 @@ FN:21,(anonymous_4)
 FN:24,(anonymous_5)
 FN:29,(anonymous_6)
 FN:34,(anonymous_7)
+<<<<<<< HEAD
 FN:94,(anonymous_8)
 FN:97,(anonymous_9)
+=======
+<<<<<<< HEAD
+FN:94,(anonymous_8)
+FN:97,(anonymous_9)
+=======
+FN:93,(anonymous_8)
+FN:96,(anonymous_9)
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 FNF:10
 FNH:5
 FNDA:5,SearchBar
@@ -155,7 +253,15 @@ FNDA:0,(anonymous_4)
 FNDA:0,(anonymous_5)
 FNDA:1,(anonymous_6)
 FNDA:3,(anonymous_7)
+<<<<<<< HEAD
 FNDA:30,(anonymous_8)
+=======
+<<<<<<< HEAD
+FNDA:30,(anonymous_8)
+=======
+FNDA:25,(anonymous_8)
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 FNDA:0,(anonymous_9)
 DA:5,5
 DA:6,5
@@ -177,8 +283,18 @@ DA:36,3
 DA:37,3
 DA:38,3
 DA:42,5
+<<<<<<< HEAD
 DA:95,30
 DA:97,0
+=======
+<<<<<<< HEAD
+DA:95,30
+DA:97,0
+=======
+DA:94,25
+DA:96,0
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 LF:22
 LH:17
 BRDA:12,0,0,1
@@ -187,10 +303,23 @@ BRDA:19,1,0,0
 BRDA:19,1,1,0
 BRDA:37,2,0,3
 BRDA:37,2,1,0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 BRDA:103,3,0,0
 BRDA:103,3,1,30
 BRDA:106,4,0,0
 BRDA:106,4,1,30
+<<<<<<< HEAD
+=======
+=======
+BRDA:102,3,0,0
+BRDA:102,3,1,25
+BRDA:105,4,0,0
+BRDA:105,4,1,25
+>>>>>>> 679b84b30393936a9b0217fb2fb159f86dd7161b
+>>>>>>> 1b41303abd677fa38766c62f3fc025bf811951e2
 BRF:10
 BRH:4
 end_of_record
