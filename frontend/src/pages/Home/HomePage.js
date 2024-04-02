@@ -136,13 +136,15 @@
 //   );
 // }
 import React, { useEffect, useReducer } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import {
   getFoodsByDietaryRestrictions,
   getAllTags,
+  getAll,
+  search, // Assuming you have a search function that matches the searchTerm against food items
 } from "../../services/foodService";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
-import SearchBar from "../../components/Search/Search"; // Adjust if necessary
+import SearchBar from "../../components/Search/Search";
 import Tags from "../../components/Tags/Tags";
 
 // Assuming db setup is correctly imported for your Firestore queries
@@ -165,25 +167,35 @@ function HomePage() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { foods, tags } = state;
   const location = useLocation();
-
+  const { searchTerm } = useParams();
   useEffect(() => {
-    // Fetch all unique tags for filtering options
+    // Always fetch and load tags
     getAllTags().then((tagsData) => {
-      // Map the array of strings to an array of objects with a 'name' property
-      const tagsWithNames = tagsData.map((tagName) => ({
-        name: tagName,
-        // count: You would need to determine the count here, if necessary
-      }));
+      const tagsWithNames = tagsData.map((tagName) => ({ name: tagName }));
       dispatch({ type: "TAGS_LOADED", payload: tagsWithNames });
     });
 
-    // Fetch foods based on selected dietary restrictions
-    // Assuming `location.state.selectedRestrictions` holds our array of restrictions
-    const restrictions = location.state?.selectedRestrictions || [];
-    getFoodsByDietaryRestrictions(restrictions).then((foodsData) => {
-      dispatch({ type: "FOODS_LOADED", payload: foodsData });
-    });
-  }, [location.state]);
+    // Determine data fetching strategy based on searchTerm or dietary restrictions
+    if (searchTerm) {
+      // If there's a searchTerm, use it to search foods
+      search(searchTerm).then((foodsData) => {
+        dispatch({ type: "FOODS_LOADED", payload: foodsData });
+      });
+    } else {
+      // Handle dietary restrictions or load all foods if no filters are specified
+      const restrictions = location.state?.selectedRestrictions || [];
+      if (restrictions.length > 0) {
+        getFoodsByDietaryRestrictions(restrictions).then((foodsData) => {
+          dispatch({ type: "FOODS_LOADED", payload: foodsData });
+        });
+      } else {
+        // You could implement a getAllFoods function if needed
+        getAll().then((foodsData) => {
+          dispatch({ type: "FOODS_LOADED", payload: foodsData });
+        });
+      }
+    }
+  }, [searchTerm, location.state]);
 
   return (
     <>
