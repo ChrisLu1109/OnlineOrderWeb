@@ -48,6 +48,7 @@ import CartPage from "./pages/Cart/CartPage";
 import Profile from "./pages/Profile/profile"; // Import the Profile component
 import AdminSetup from "./components/AdminSetup/AdminSetup";
 import OrderPage from "./pages/Order/Order";
+import FoodManagement from "./components/food-management/food-management";
 
 export default function AppRoutes() {
   return (
@@ -62,6 +63,7 @@ export default function AppRoutes() {
       <Route path="/profile" element={<Profile />} />{" "}
       {/* New route for the Profile page */}
       <Route path="/admin/setup" element={<AdminSetup />} />
+      <Route path="/food-management" element = {<FoodManagement/>}></Route>
       <Route path="/order" element={<OrderPage />} />
     </Routes>
   );

@@ -3,13 +3,18 @@ import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore'
 import { sample_foods, sample_tags } from '../data';
 
 
-export const addSampleFoodsToFirestore = async () => {
-  const foodCollectionRef = collection(db, "foods");
-
-  for (const food of sample_foods) {
-    await addDoc(foodCollectionRef, food);
+export const addSampleFoodsToFirestore = async (foodData) => {
+  console.log(foodData);
+  try {
+    const docRef = await addDoc(collection(db, "foods"), foodData);
+    console.log("Document written with ID: ", docRef.id); // Helpful for debugging and confirming the operation
+    return docRef; // Optionally return the document reference
+  } catch (error) {
+    console.error("Error adding document to Firestore:", error); // Log the error for debugging
+    throw new Error(`Error adding document: ${error}`);
   }
 };
+
 
 export const addSampleTagsToFirestore = async () => {
   const tagsCollectionRef = collection(db, "tags");

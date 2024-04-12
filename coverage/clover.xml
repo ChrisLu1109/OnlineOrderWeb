@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1712034441813" clover="3.2.0">
-  <project timestamp="1712034441813" name="All files">
+<coverage generated="1712034915840" clover="3.2.0">
+  <project timestamp="1712034915840" name="All files">
     <metrics statements="58" coveredstatements="52" conditionals="28" coveredconditionals="20" methods="28" coveredmethods="23" elements="114" coveredelements="95" complexity="0" loc="58" ncloc="58" packages="6" files="6" classes="6"/>
     <package name="components.Header">
       <metrics statements="15" coveredstatements="14" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
       <file name="Header.js" path="D:\OnlineOrderWeb\frontend\src\components\Header\Header.js">
         <metrics statements="15" coveredstatements="14" conditionals="8" coveredconditionals="6" methods="5" coveredmethods="5"/>
-        <line num="11" count="7" type="stmt"/>
         <line num="12" count="7" type="stmt"/>
         <line num="13" count="7" type="stmt"/>
-        <line num="15" count="7" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
         <line num="17" count="4" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="22" count="7" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="23" count="7" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="33" count="7" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="34" count="7" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.Search">
@@ -56,7 +56,7 @@
       <file name="Tags.js" path="D:\OnlineOrderWeb\frontend\src\components\Tags\Tags.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="10" count="10" type="stmt"/>
+        <line num="9" count="10" type="stmt"/>
       </file>
     </package>
     <package name="components.Thumbnails">
