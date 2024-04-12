@@ -48,7 +48,11 @@ import CartPage from "./pages/Cart/CartPage";
 import Profile from "./pages/Profile/profile"; // Import the Profile component
 import AdminSetup from "./components/AdminSetup/AdminSetup";
 import OrderPage from "./pages/Order/Order";
+<<<<<<< HEAD
 import FoodManagement from "./components/food-management/food-management";
+=======
+import OrderManagement from "./pages/Order-Management/order-management";
+>>>>>>> 5e4295ad13722256c0f29f7da1dd7e27555d161e
 
 export default function AppRoutes() {
   return (
@@ -58,13 +62,13 @@ export default function AppRoutes() {
       <Route path="/search/:searchTerm" element={<HomePage />} />
       <Route path="/tag/:tag" element={<HomePage />} />
       <Route path="/food/:id" element={<FoodPage />} />
-      <Route path="/dietary" element={<DietaryRestrictionsPage/>} />
+      <Route path="/dietary" element={<DietaryRestrictionsPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/profile" element={<Profile />} />{" "}
-      {/* New route for the Profile page */}
       <Route path="/admin/setup" element={<AdminSetup />} />
       <Route path="/food-management" element = {<FoodManagement/>}></Route>
       <Route path="/order" element={<OrderPage />} />
+      <Route path="/order-management" element={<OrderManagement />} />
     </Routes>
   );
 }
