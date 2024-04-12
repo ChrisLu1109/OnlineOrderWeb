@@ -8,6 +8,7 @@ import {
   query,
   where,
   getDocs,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db, auth } from "../../services/firebase-config";
 import classes from "./cartPage.module.css";
@@ -99,8 +100,8 @@ export default function CartPage() {
         calories: item.calories,
         name: item.food.name, // Assuming you want to store the name of the food
       })),
+      createdAt: serverTimestamp(), // This will set the timestamp
     };
-
     try {
       // Add the new order to the 'orders' collection in Firestore
       const docRef = await addDoc(collection(db, "orders"), newOrder);
