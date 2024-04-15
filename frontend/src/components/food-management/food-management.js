@@ -13,6 +13,23 @@ const FoodManagement = () => {
     allergy: [],
     calories: 0,
     image: null,
+    dietaryRestrictions: {
+      "Dairy-Free": false,
+      "Gluten-Free": false,
+      "Halal": false,
+      "Keto": false,
+      "Kosher": false,
+      "Lacto-ovo vegetarian": false,
+      "Lacto-vegetarian": false,
+      "Low Calories": false,
+      "Low Sodium": false,
+      "Low Sugar": false,
+      "None": true,
+      "Nut-Free": false,
+      "Ovo-vegetarian": false,
+      "Pescatarian": false,
+      "Vegan": false,
+    },
   });
 
   const uploadImage = async (image) => {
@@ -48,14 +65,6 @@ const FoodManagement = () => {
     }));
   };
 
-  const handleAllergyChange = (e) => {
-    // Assuming allergies will be entered as comma-separated values
-    const allergy = e.target.value.split(',').map(allergy => allergy.trim()); // Convert string to array
-    setFood(prev => ({
-      ...prev,
-      allergy
-    }));
-  };
 
   const handleAddFood = async () => {
     try {
@@ -86,6 +95,17 @@ const FoodManagement = () => {
       alert('Error adding new food item to Firestore. Check the console for more information.');
     }
   };
+
+  const handleDietaryRestrictionsChange = (e) => {
+    const { name, checked } = e.target;
+    setFood((prevFood) => ({
+      ...prevFood,
+      dietaryRestrictions: {
+        ...prevFood.dietaryRestrictions,
+        [name]: checked,
+      }
+    }));
+  };
   
 
   return (
@@ -101,13 +121,18 @@ const FoodManagement = () => {
         onChange={handleTagsChange} 
         placeholder="Tags (comma-separated)" 
       />
-      <input 
-        type="text" 
-        name="allergy" 
-        value={food.allergy.join(', ')} // Convert array back to string for display
-        onChange={handleAllergyChange} 
-        placeholder="Allergies (comma-separated)" 
-      />
+      {Object.keys(food.dietaryRestrictions).map((restriction) => (
+  <div key={restriction}>
+    <input
+      type="checkbox"
+      id={restriction}
+      name={restriction}
+      checked={food.dietaryRestrictions[restriction]}
+      onChange={handleDietaryRestrictionsChange}
+    />
+    <label htmlFor={restriction}>{restriction.replace(/([A-Z])/g, ' $1').trim()}</label>
+  </div>
+))}
       <input type="number" name="calories" value={food.calories} onChange={handleInputChange} placeholder="Calories" />
       <input type="file" onChange={(e) => setFood(prev => ({ ...prev, image: e.target.files[0] }))} />
       <button onClick={handleAddFood}>Add New Food Item to Firestore</button>
