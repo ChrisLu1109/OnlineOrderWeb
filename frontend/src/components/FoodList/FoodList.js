@@ -41,6 +41,32 @@ const FoodList = () => {
       return food;
     }));
   };
+  const addTag = (id, newTag) => {
+    setFoods(foods.map(food => {
+      if (food.id === id && newTag) {
+        return { ...food, tags: [...food.tags, newTag.trim()] };
+      }
+      return food;
+    }));
+  };
+
+  // Function to handle deleting a tag
+  const deleteTag = (id, tagToDelete) => {
+    setFoods(foods.map(food => {
+      if (food.id === id) {
+        return { ...food, tags: food.tags.filter(tag => tag !== tagToDelete) };
+      }
+      return food;
+    }));
+  };
+
+  const handleTagInputChange = (e, id) => {
+    const { value } = e.target;
+    if (e.key === 'Enter') {
+      addTag(id, value);
+      e.target.value = ''; // Reset input after adding the tag
+    }
+  };
 
   useEffect(() => {
     fetchFoods();
@@ -96,6 +122,19 @@ const FoodList = () => {
                 </label>
               ))}
             </div>
+            <div className="tag-section">
+            {food.tags.map((tag, index) => (
+              <div key={index} className="tag">
+                {tag}
+                <button onClick={() => deleteTag(food.id, tag)} className="delete-tag-btn">x</button>
+              </div>
+            ))}
+            <input
+              type="text"
+              onKeyPress={(e) => handleTagInputChange(e, food.id)}
+              placeholder="Add tag..."
+            />
+          </div>
             <button type="submit">Update Details</button>
           </form>
           <button onClick={() => deleteFoodItem(food.id)}>Delete</button>
