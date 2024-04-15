@@ -10,10 +10,11 @@
     border: none; /* Removes the default button border */
     border-radius: 10rem; /* Fully rounded corners */
     font-weight: 600; /* Bold text */
-    color: blue; /* Text color */
+    color: white; /* Text color */
     cursor: pointer; /* Cursor changes to indicate button */
     text-transform: capitalize; /* Capitalize tag names */
     font-size: 0.9rem; /* Text size */
-    transition: background-color 0.3s; /* Smooth background color change on hover */
+    transition: background-color 0.5s; /* Smooth background color change on hover */
+    background-color: rgb(218, 154, 33);
   }
   
