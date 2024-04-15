@@ -35,9 +35,11 @@ export default function CartProvider({ children }) {
     const storedCart = localStorage.getItem(CART_KEY);
     return storedCart ? JSON.parse(storedCart) : EMPTY_CART;
   }
-
   const sum = (items) => {
-    return items.reduce((prevValue, curValue) => prevValue + curValue, 0);
+    return items.reduce(
+      (prevValue, curValue) => prevValue + Number(curValue),
+      0
+    );
   };
 
   const removeFromCart = (foodId) => {

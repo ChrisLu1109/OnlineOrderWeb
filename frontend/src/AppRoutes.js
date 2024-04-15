@@ -24,7 +24,7 @@ export default function AppRoutes() {
       <Route path="/cart" element={<CartPage />} />
       <Route path="/profile" element={<Profile />} />{" "}
       <Route path="/admin/setup" element={<AdminSetup />} />
-      <Route path="/food-management" element = {<FoodManagement/>}></Route>
+      <Route path="/food-management" element={<FoodManagement />}></Route>
       <Route path="/order" element={<OrderPage />} />
       <Route path="/order-management" element={<OrderManagement />} />
       <Route path="/view-food" element={<FoodList />} />
