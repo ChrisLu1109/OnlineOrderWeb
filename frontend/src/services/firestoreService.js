@@ -1,7 +1,5 @@
 import { db } from './firebase-config';
-import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import { sample_foods, sample_tags } from '../data';
-
+import { collection, addDoc, getDocs, getDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 
 export const addSampleFoodsToFirestore = async (foodData) => {
   console.log(foodData);
@@ -15,44 +13,43 @@ export const addSampleFoodsToFirestore = async (foodData) => {
   }
 };
 
+  // Function to fetch all foods from Firestore
+export const getFoodsFromFirestore = async () => {
+  const foodCollection = collection(db, 'foods');
+  const foodSnapshot = await getDocs(foodCollection);
+  const foodList = foodSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  return foodList;
+};
 
-export const addSampleTagsToFirestore = async () => {
-  const tagsCollectionRef = collection(db, "tags");
-
-  for (const tag of sample_tags) {
-    await addDoc(tagsCollectionRef, tag);
+// Function to update a food item in Firestore
+export const updateFoodInFirestore = async (id, updatedFields) => {
+  const foodRef = doc(db, 'foods', id);
+  try {
+      await updateDoc(foodRef, updatedFields);
+      console.log("Document updated with ID:", id);
+  } catch (error) {
+      console.error("Error updating document:", error);
+      throw error;
   }
 };
 
+// Function to delete a food item from Firestore
+export const deleteFoodItem = async (foodId) => {
+  try {
+    const foodRef = doc(db, "foods", foodId);
+    await deleteDoc(foodRef);
+    console.log("Document deleted with ID: ", foodId);
+  } catch (error) {
+    console.error("Error removing document: ", error);
+  }
+};
 
-export const deleteDuplicateFoods = async () => {
-    const foodsCollectionRef = collection(db, "foods");
-    const foodsSnapshot = await getDocs(foodsCollectionRef);
-    const foodItems = foodsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  
-    // This map will track the first occurrence of each food by name
-    const foodMap = new Map();
-  
-    // Identifying duplicates
-    const duplicates = [];
-    foodItems.forEach((foodItem) => {
-      if (foodMap.has(foodItem.name)) {
-        // If we've seen this name before, it's a duplicate
-        duplicates.push(foodItem.id);
-      } else {
-        // Otherwise, mark this name as seen
-        foodMap.set(foodItem.name, foodItem.id);
-      }
-    });
-  
-    // Deleting duplicates
-    const deletePromises = duplicates.map((duplicateId) => {
-      const foodDocRef = doc(db, "foods", duplicateId);
-      return deleteDoc(foodDocRef);
-    });
-  
-    // Wait for all delete operations to complete
-    await Promise.all(deletePromises);
-  
-    console.log(`Deleted ${duplicates.length} duplicate food items.`);
-  };
+export const getFoodByIdFromFirestore = async (id) => {
+  const foodDocRef = doc(db, 'foods', id);
+  const foodDocSnap = await getDoc(foodDocRef);
+  if (foodDocSnap.exists()) {
+      return foodDocSnap.data();
+  } else {
+      return null;  // Returns null if the food item does not exist
+  }
+};

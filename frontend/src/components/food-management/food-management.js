@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addSampleFoodsToFirestore } from '../../services/firestoreService';
 import { storage } from '../../services/firebase-config';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
+import { Link } from 'react-router-dom';
 const FoodManagement = () => {
   const [food, setFood] = useState({
     id: "",
@@ -136,6 +136,8 @@ const FoodManagement = () => {
       <input type="number" name="calories" value={food.calories} onChange={handleInputChange} placeholder="Calories" />
       <input type="file" onChange={(e) => setFood(prev => ({ ...prev, image: e.target.files[0] }))} />
       <button onClick={handleAddFood}>Add New Food Item to Firestore</button>
+      <Link to="/view-food"><button>View Existing Food Items</button></Link>
+      <Link to="/admin/setup"><button>Back</button></Link>
     </div>
   );
 };
