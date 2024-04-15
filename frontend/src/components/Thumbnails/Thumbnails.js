@@ -15,12 +15,15 @@ export default function Thumbnails({ foods }) {
             <div className={classes.content}>
               <div className={classes.name}>{food.name}</div>
               <div className={classes.calories}>{food.calories} calories</div>
-              {food.favorite && <span className={classes.favorite}>♥</span>}
               <div className={classes.tags}>
                 {food.tags.map((tag) => (
-                  <span key={tag} className={classes.tagButton}>{tag}</span>
+                  <span key={tag} className={classes.tagButton}>
+                    {tag}
+                  </span>
                 ))}
-                <span className={classes.cookTime}>Cook Time: {food.cookTime} Mins</span>
+                <span className={classes.cookTime}>
+                  Cook Time: {food.cookTime} Mins
+                </span>
               </div>
             </div>
           </Link>

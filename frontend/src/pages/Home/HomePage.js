@@ -38,7 +38,6 @@
 //     dispatch({ type: "FOODS_LOADED", payload: foodsByTag }); // Update the state with the fetched foods
 //   };
 
-
 //   useEffect(() => {
 //     // Always fetch and load tags
 //     getAllTags().then((tagsData) => {
@@ -76,19 +75,14 @@
 //   );
 // }
 
-// export default HomePage;
 import React, { useEffect, useReducer } from "react";
+import { Link } from "react-router-dom"; // Make sure to import Link
 import { useLocation, useParams } from "react-router-dom";
-import {
-  filterFoods, // Updated import to use the new filterFoods function
-  getAllTags,
-  search,
-} from "../../services/foodService";
+import { filterFoods, getAllTags, search } from "../../services/foodService";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import SearchBar from "../../components/Search/Search";
 import Tags from "../../components/Tags/Tags";
 
-// No changes are needed for db setup, assuming it's correctly imported for Firestore queries
 import { db } from "../../services/firebase-config";
 
 const initialState = { foods: [], tags: [] };
@@ -111,33 +105,26 @@ function HomePage() {
   const { searchTerm } = useParams();
 
   const handleTagClick = async (tagName) => {
-    // Include restrictions in the filterFoods function call
     const restrictions = location.state?.selectedRestrictions || [];
     const foodsFiltered = await filterFoods(restrictions, tagName);
     dispatch({ type: "FOODS_LOADED", payload: foodsFiltered });
   };
 
-
   useEffect(() => {
-    // Always fetch and load tags
     getAllTags().then((tagsData) => {
-      const tagsWithNames = tagsData.map((tagName) => ({ name: tagName }));
-      dispatch({ type: "TAGS_LOADED", payload: tagsWithNames });
+      dispatch({
+        type: "TAGS_LOADED",
+        payload: tagsData.map((tagName) => ({ name: tagName })),
+      });
     });
 
-    // Moved the logic for filtering inside useEffect
     const loadFoods = async () => {
-      const restrictions = location.state?.selectedRestrictions || [];
       let foodsData;
-
-      if(searchTerm) {
-        // If there's a searchTerm, use it to search foods
+      if (searchTerm) {
         foodsData = await search(searchTerm);
       } else {
-        // Use the filterFoods function to apply both dietary restrictions and tag filters
-        foodsData = await filterFoods(restrictions, "All");
+        foodsData = await filterFoods([], "All");
       }
-      
       dispatch({ type: "FOODS_LOADED", payload: foodsData });
     };
 
@@ -146,6 +133,28 @@ function HomePage() {
 
   return (
     <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "10px 20px",
+        }}
+      >
+        <Link
+          to="/admin/setup"
+          style={{
+            padding: "10px 20px",
+            fontSize: "1.2em",
+            background: "#007bff",
+            color: "white",
+            textDecoration: "none",
+            borderRadius: "5px",
+            boxShadow: "0 2px 4px rgba(0,123,255,0.3)",
+          }}
+        >
+          Administrator Login
+        </Link>
+      </div>
       <SearchBar onSearch={(term) => console.log(term)} />
       <Tags tags={tags} onTagClick={handleTagClick} />
       <Thumbnails foods={foods} />
