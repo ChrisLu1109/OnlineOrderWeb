@@ -104,17 +104,23 @@ function HomePage() {
   const location = useLocation();
   const { searchTerm } = useParams();
 
+  // Modify handleTagClick to check for the "All" tag
   const handleTagClick = async (tagName) => {
-    const restrictions = location.state?.selectedRestrictions || [];
-    const foodsFiltered = await filterFoods(restrictions, tagName);
-    dispatch({ type: "FOODS_LOADED", payload: foodsFiltered });
+    if (tagName === "All") {
+      const allFoods = await filterFoods([], "All");
+      dispatch({ type: "FOODS_LOADED", payload: allFoods });
+    } else {
+      const restrictions = location.state?.selectedRestrictions || [];
+      const foodsFiltered = await filterFoods(restrictions, tagName);
+      dispatch({ type: "FOODS_LOADED", payload: foodsFiltered });
+    }
   };
 
   useEffect(() => {
     getAllTags().then((tagsData) => {
       dispatch({
         type: "TAGS_LOADED",
-        payload: tagsData.map((tagName) => ({ name: tagName })),
+        payload: ["All", ...tagsData].map((tagName) => ({ name: tagName })), // Include "All" in the tag list
       });
     });
 
