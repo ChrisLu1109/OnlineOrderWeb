@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const FoodList = () => {
   const [foods, setFoods] = useState([]);
+  const [newTags, setNewTags] = useState({});
 
   // Function to fetch foods from Firestore
   const fetchFoods = async () => {
@@ -41,13 +42,20 @@ const FoodList = () => {
       return food;
     }));
   };
-  const addTag = (id, newTag) => {
-    setFoods(foods.map(food => {
-      if (food.id === id && newTag) {
-        return { ...food, tags: [...food.tags, newTag.trim()] };
-      }
-      return food;
-    }));
+  const addTag = (id) => {
+    const newTag = newTags[id] || '';
+    if (newTag.trim()) {
+      setFoods(foods.map(food => {
+        if (food.id === id) {
+          // Avoid adding duplicate tags
+          if (!food.tags.includes(newTag.trim())) {
+            return { ...food, tags: [...food.tags, newTag.trim()] };
+          }
+        }
+        return food;
+      }));
+      setNewTags({ ...newTags, [id]: '' }); // Reset the input for new tag
+    }
   };
 
   // Function to handle deleting a tag
@@ -60,13 +68,10 @@ const FoodList = () => {
     }));
   };
 
-  const handleTagInputChange = (e, id) => {
-    const { value } = e.target;
-    if (e.key === 'Enter') {
-      addTag(id, value);
-      e.target.value = ''; // Reset input after adding the tag
-    }
+  const handleNewTagChange = (e, id) => {
+    setNewTags({ ...newTags, [id]: e.target.value });
   };
+
 
   useEffect(() => {
     fetchFoods();
@@ -122,18 +127,22 @@ const FoodList = () => {
                 </label>
               ))}
             </div>
-            <div className="tag-section">
+            <div className="tags-container">
             {food.tags.map((tag, index) => (
               <div key={index} className="tag">
                 {tag}
-                <button onClick={() => deleteTag(food.id, tag)} className="delete-tag-btn">x</button>
+                <button type="button" onClick={() => deleteTag(food.id, tag)} className="delete-tag-btn">x</button>
               </div>
             ))}
             <input
               type="text"
-              onKeyPress={(e) => handleTagInputChange(e, food.id)}
-              placeholder="Add tag..."
+              value={newTags[food.id] || ''}
+              onChange={(e) => handleNewTagChange(e, food.id)}
+              placeholder="New tag"
             />
+            <button type="button" onClick={() => addTag(food.id)} className="add-tag-btn">
+              Add Tag
+            </button>
           </div>
             <button type="submit">Update Details</button>
           </form>
