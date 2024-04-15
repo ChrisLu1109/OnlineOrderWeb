@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Thumbnails.module.css";
 import { Link } from "react-router-dom";
+
 export default function Thumbnails({ foods }) {
   return (
     <ul className={classes.list}>
@@ -9,8 +10,12 @@ export default function Thumbnails({ foods }) {
           <Link to={`/food/${food.id}`} className={classes.link}>
             <img
               className={classes.image}
-              src={`/foods/${food.imageURL}`}
+              src={food.imageURL} // Assuming imageURL is a full URL
               alt={food.name}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "path_to_default_image.jpg";
+              }} // Fallback for broken images
             />
             <div className={classes.content}>
               <div className={classes.name}>{food.name}</div>
