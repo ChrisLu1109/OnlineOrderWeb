@@ -66,16 +66,25 @@ export default function CartProvider({ children }) {
   };
 
   const addToCart = (food) => {
-    const cartItem = cartItems.find((item) => item.food.id === food.id);
-    if (cartItem) {
-      changeQuantity(cartItem, cartItem.quantity + 1);
+    const existingCartItem = cartItems.find((item) => item.food.id === food.id);
+    if (existingCartItem) {
+      // Check if the current quantity is 9
+      if (existingCartItem.quantity >= 9) {
+        alert('You cannot add more than 9 of the same item to the cart.');
+      } else {
+        // If it's less than 9, increase the quantity by 1
+        changeQuantity(existingCartItem, existingCartItem.quantity + 1);
+      }
     } else {
+      // If the item is not in the cart, add it with a quantity of 1
       setCartItems([
         ...cartItems,
         { food, quantity: 1, calories: food.calories },
       ]);
     }
   };
+  
+  
 
   const clearCart = () => {
     setCartItems([]);
@@ -90,13 +99,15 @@ export default function CartProvider({ children }) {
         cart: { items: cartItems, totalCalories, totalCount },
         removeFromCart,
         changeQuantity,
-        addToCart,
+        addToCart, 
         clearCart,
       }}
     >
       {children}
     </CartContext.Provider>
   );
+  
+
 }
 
 export const useCart = () => useContext(CartContext);
