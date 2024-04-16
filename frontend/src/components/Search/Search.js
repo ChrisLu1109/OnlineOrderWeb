@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import classes from "./Search.module.css";
-import { useNavigate, useParams } from "react-router-dom";
 
-export default function Search() {
+export default function Search({ onSearch }) {
   const [term, setTerm] = useState("");
-  const navigate = useNavigate();
-  const { searchTerm } = useParams();
 
-  const search = async () => {
-    console.log("Search term:", term); // This should log the term when search is triggered
-    term ? navigate("/search/" + term) : navigate("/");
+  const handleSearch = () => {
+    onSearch(term); // Pass the term back to the parent component
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   return (
@@ -17,11 +19,12 @@ export default function Search() {
       <input
         type="text"
         placeholder="Enter the item name to search"
+        className={classes.input}
         onChange={(e) => setTerm(e.target.value)}
-        onKeyUp={(e) => e.key === "Enter" && search()}
-        defaultValue={searchTerm}
+        onKeyUp={handleKeyUp}
+        value={term}
       />
-      <button onClick={search}>Search</button>
+      <button className={classes.button} onClick={handleSearch}>Search</button>
     </div>
   );
 }
