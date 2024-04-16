@@ -81,7 +81,7 @@ const AdminLogin = () => {
 
   return (
     <div style={formStyle}>
-      <h2>Stuff Login</h2>
+      <h2>Staff Login</h2>
       <input
         type="text"
         value={username}
